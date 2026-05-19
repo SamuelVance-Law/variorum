@@ -9,12 +9,12 @@ on:
   push:
     paths:
       - 'works/**.json'
-      - 'tools/validate.py'
+      - 'validate.py'
       - '.github/workflows/validate.yml'
   pull_request:
     paths:
       - 'works/**.json'
-      - 'tools/validate.py'
+      - 'validate.py'
 
 jobs:
   validate:
@@ -27,4 +27,4 @@ jobs:
           python-version: '3.x'
 
       - name: Validate all work files
-        run: python3 tools/validate.py works/*.json
+        run: python3 validate.py works/*.json
