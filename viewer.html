@@ -1184,6 +1184,8 @@
         .card.size-medium { width: 280px; }
         .endorser-satellite { width: 180px; }
         .about-panel { padding: 24px 24px; }
+        .search-bar { top: 56px; width: calc(100vw - 24px); }
+        .search-bar input { width: 0; flex: 1 1 auto; min-width: 120px; }
     }
 </style>
 </head>
@@ -1231,7 +1233,7 @@
     // PLATFORM CONFIG
     // The engine declares what schema versions it supports and where
     // to find the work data. The work parameter can be overridden via
-    // URL query string: engine.html?work=fr124  →  works/fr124.json
+    // URL query string: viewer.html?work=fr124  →  works/fr124.json
     // ============================================================
     const SUPPORTED_SCHEMA = '1.0';
     const STORAGE_VERSION = 'v2';
@@ -2060,16 +2062,17 @@
 
         bindHandlers();
 
-        // Re-apply search after re-render so marks survive state changes
+        // Re-apply search after re-render so marks survive state changes.
+        // Use {scroll: false} so unrelated actions (engaging a card,
+        // changing layers) don't yank the viewport around.
         if (searchOpen) {
             const q = document.getElementById('searchInput').value;
             if (q && q.trim()) {
-                // Preserve active index across re-renders (best-effort)
                 const prevIdx = searchActiveIdx;
-                performSearch(q);
+                performSearch(q, { scroll: false });
                 if (searchMatches.length > 0 && prevIdx >= 0 && prevIdx < searchMatches.length) {
                     searchActiveIdx = prevIdx;
-                    activateMatch(prevIdx);
+                    activateMatch(prevIdx, { scroll: false });
                     updateSearchUI();
                 }
             }
@@ -2566,9 +2569,15 @@
             parent.replaceChild(document.createTextNode(mark.textContent), mark);
             parent.normalize();  // merge adjacent text nodes back together
         });
+        // Also clear the "active match container" class so satellites don't
+        // stay popped after search closes or the active match goes away.
+        document.querySelectorAll('.search-active-container').forEach(el => {
+            el.classList.remove('search-active-container');
+        });
     }
 
-    function performSearch(query) {
+    function performSearch(query, opts) {
+        const scroll = !(opts && opts.scroll === false);
         clearSearchHighlights();
         searchMatches = [];
         searchActiveIdx = -1;
@@ -2620,12 +2629,13 @@
 
         if (searchMatches.length > 0) {
             searchActiveIdx = 0;
-            activateMatch(0);
+            activateMatch(0, { scroll });
         }
         updateSearchUI();
     }
 
-    function activateMatch(idx) {
+    function activateMatch(idx, opts) {
+        const scroll = !(opts && opts.scroll === false);
         // Clear previous active state on all marks and containers
         document.querySelectorAll('mark.search-match.active').forEach(m => m.classList.remove('active'));
         document.querySelectorAll('.search-active-container').forEach(el => el.classList.remove('search-active-container'));
@@ -2642,7 +2652,7 @@
             }
             parent = parent.parentElement;
         }
-        scrollToMatch(mark);
+        if (scroll) scrollToMatch(mark);
     }
 
     function nextMatch()  { if (searchMatches.length === 0) return; searchActiveIdx = (searchActiveIdx + 1) % searchMatches.length; activateMatch(searchActiveIdx); updateSearchUI(); }
