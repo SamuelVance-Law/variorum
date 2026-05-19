@@ -1456,14 +1456,27 @@
         const r = viewport.getBoundingClientRect();
         const margin = 80;
         let minX, minY, maxX, maxY;
+
+        // Measure the actual rendered card if it's in the DOM, otherwise use
+        // size estimates. offsetWidth/Height return unscaled layout dimensions
+        // and ignore the stage's scale() transform, so they're in the same
+        // coordinate space as witness positions.
+        function measure(witnessId, fallbackW, fallbackH) {
+            const el = document.querySelector(`[data-witness="${witnessId}"]`);
+            if (el && el.offsetHeight > 0) {
+                return { w: el.offsetWidth, h: el.offsetHeight };
+            }
+            return { w: fallbackW, h: fallbackH };
+        }
+
         if (layer === 1) {
             const ms = getWitness(workData.primaryWitnessId);
-            const w = 480, h = 600;
+            const { w, h } = measure(ms.id, 480, 600);
             minX = ms.position.x - w/2; maxX = ms.position.x + w/2;
             minY = ms.position.y - h/2; maxY = ms.position.y + h/2;
         } else if (layer === 2) {
             const ms = getWitness(workData.primaryWitnessId);
-            const msW = 480, msH = 600;
+            const { w: msW, h: msH } = measure(ms.id, 480, 600);
             const rcW = 440, rcH = 540;
             minX = Math.min(ms.position.x - msW/2, readingCopyPosition.x - rcW/2);
             maxX = Math.max(ms.position.x + msW/2, readingCopyPosition.x + rcW/2);
@@ -1471,8 +1484,9 @@
             maxY = Math.max(ms.position.y + msH/2, readingCopyPosition.y + rcH/2);
         } else {
             witnesses.forEach(w => {
-                const wd = w.type === 'manuscript' ? 480 : 340;
-                const ht = w.type === 'manuscript' ? 600 : 240;
+                const fbW = w.type === 'manuscript' ? 480 : 340;
+                const fbH = w.type === 'manuscript' ? 600 : 240;
+                const { w: wd, h: ht } = measure(w.id, fbW, fbH);
                 const pos = getWitnessPosition(w);
                 if (minX === undefined) {
                     minX = pos.x - wd/2; maxX = pos.x + wd/2;
@@ -2408,6 +2422,18 @@
                 transcriptionVisible = !transcriptionVisible;
                 render();
             });
+        });
+
+        // Re-fit once the manuscript image finishes loading — the first autoFit
+        // ran before the image had dimensions, so the card's measured height
+        // was incomplete. After load, re-measure and re-center (only if we're
+        // still on a layer where the manuscript card's height matters).
+        document.querySelectorAll('.ms-image').forEach(img => {
+            if (!img.complete) {
+                img.addEventListener('load', () => {
+                    if (layer === 1 || layer === 2) autoFit();
+                }, { once: true });
+            }
         });
 
         document.querySelectorAll('[data-close-card]').forEach(el => {
