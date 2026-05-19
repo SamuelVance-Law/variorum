@@ -11,6 +11,11 @@
   },
   "primaryWitnessId": "fascicle-6",
   "manuscriptRendering": {
+    "image": {
+      "src": "works/fr124-fascicle-6.jpg",
+      "alt": "Manuscript page of \"Safe in their Alabaster Chambers\" (Fr124) bound into Fascicle 6, ca. 1859. Houghton Library MS Am 1118.3, h11b–c.",
+      "credit": "Courtesy Houghton Library, Harvard University. Image used under CC BY-NC-ND 3.0."
+    },
     "lines": [
       { "text": "Safe in their Alabas-" },
       { "text": "ter Chambers -", "indent": true },
