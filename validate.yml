@@ -1,0 +1,30 @@
+name: Validate work files
+
+# Runs the schema validator on every change to work files (or to the validator
+# itself). Since this project is edited via the GitHub browser UI rather than
+# locally, CI is where the safety net lives — a typo in a work file would
+# otherwise deploy a broken site via Cloudflare Pages auto-deploy.
+
+on:
+  push:
+    paths:
+      - 'works/**.json'
+      - 'tools/validate.py'
+      - '.github/workflows/validate.yml'
+  pull_request:
+    paths:
+      - 'works/**.json'
+      - 'tools/validate.py'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Validate all work files
+        run: python3 tools/validate.py works/*.json

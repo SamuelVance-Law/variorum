@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "1.0",
+  "id": "REPLACE_ME_with_short_lowercase_id",
+  "work": {
+    "title": "Title of the Work",
+    "shortTitle": "Short title or catalogue number",
+    "author": "Author Name",
+    "kind": "poem",
+    "datePeriod": "ca. YYYY–YYYY"
+  },
+  "primaryWitnessId": "primary-witness",
+  "manuscriptRendering": {
+    "lines": [
+      { "text": "First line of the primary witness, as the author wrote it" },
+      { "text": "Second line, indented", "indent": true },
+      { "text": "Third line, with a stanza break above", "gap": true },
+      { "text": "Fourth line continues the stanza" }
+    ],
+    "cruxMarks": [
+      { "cruxId": "example-inline-crux", "top": 80, "left": 60, "title": "Tooltip for the mark" }
+    ],
+    "caption": [
+      { "text": "Archive name" },
+      { "text": "Catalogue · number", "mono": true },
+      { "text": "Date or fascicle" }
+    ]
+  },
+  "readingCopy": {
+    "position": { "x": 220, "y": 0 },
+    "stanzas": [
+      {
+        "id": "stanza1",
+        "lines": [
+          "A clean typeset line in the reading copy",
+          "Another line with a {crux:example-inline-crux} contested word",
+          "A third line of stanza one"
+        ]
+      },
+      {
+        "id": "stanza2",
+        "asCrux": "example-stanza-crux"
+      }
+    ]
+  },
+  "witnesses": [
+    {
+      "id": "primary-witness",
+      "type": "manuscript",
+      "sigla": "P",
+      "aboutPhrase": "the primary witness",
+      "position": { "x": 0, "y": 0 },
+      "archive": "Archive · Catalogue · Date",
+      "apparatus": {
+        "context": "Editorial context for this witness — what it is, what it argues, why it matters textually.",
+        "endorsements": []
+      }
+    },
+    {
+      "id": "alternative-stanza",
+      "type": "variant",
+      "kind": "Variant",
+      "sigla": "A",
+      "title": "Alternative stanza title",
+      "subtitle": "Source or context",
+      "date": "ca. YYYY",
+      "aboutPhrase": "the alternative reading",
+      "position": { "x": -300, "y": -600 },
+      "stagger": 0,
+      "body": "The text of the alternative stanza, line\nby line if multiline.",
+      "multiline": true,
+      "apparatus": {
+        "context": "Editorial context for this variant.",
+        "endorsements": []
+      }
+    }
+  ],
+  "cruxes": [
+    {
+      "id": "example-inline-crux",
+      "label": "Stanza 1, line 2",
+      "location": "inline",
+      "canvasPosition": { "x": -600, "y": -400 },
+      "positions": [
+        {
+          "id": "reading-original",
+          "label": "Original",
+          "foregrounded": true,
+          "endorsements": []
+        },
+        {
+          "id": "reading-alternative",
+          "label": "Alternative",
+          "foregrounded": false,
+          "endorsements": []
+        }
+      ]
+    },
+    {
+      "id": "example-stanza-crux",
+      "label": "Stanza 2",
+      "location": "stanza",
+      "positions": [
+        {
+          "id": "alternative-stanza",
+          "label": "Alternative",
+          "foregrounded": true,
+          "witnessId": "alternative-stanza"
+        }
+      ]
+    }
+  ],
+  "connections": []
+}
