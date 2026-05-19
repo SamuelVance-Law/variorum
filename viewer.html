@@ -807,12 +807,18 @@
         box-shadow: 0 2px 6px rgba(21,20,15,0.05);
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.35s ease, transform 0.35s ease;
+        transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.2s ease;
     }
+    /* Layer 4 default: satellites form a calm low-opacity field. They pop to
+       full when their witness is engaged (set in markup at render time) or
+       when any satellite in their group is hovered (via .related-active). */
     .viewport.layer-4 .endorser-satellite {
-        opacity: 1;
+        opacity: 0.3;
         transform: translate(-50%, -50%) scale(1);
         pointer-events: auto;
+    }
+    .viewport.layer-4 .endorser-satellite.related-active {
+        opacity: 1;
     }
     .satellite-name {
         font-family: var(--sans);
@@ -868,6 +874,95 @@
         transition: opacity 0.4s 0.15s;
     }
     .viewport.layer-4 .satellite-line { opacity: 0.5; }
+
+    /* ============== SEARCH ============== */
+    .search-bar {
+        position: fixed;
+        top: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: none;
+        align-items: center;
+        gap: 4px;
+        padding: 5px 6px 5px 14px;
+        background: var(--paper);
+        border: 1px solid var(--rule);
+        border-radius: 999px;
+        box-shadow: 0 8px 28px rgba(21,20,15,0.14), 0 2px 6px rgba(21,20,15,0.06);
+        z-index: 60;
+        font-family: var(--sans);
+    }
+    .search-bar.open { display: flex; }
+    .search-bar input {
+        border: none;
+        background: transparent;
+        width: 240px;
+        padding: 4px 4px;
+        font-family: var(--sans);
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--ink);
+        outline: none;
+    }
+    .search-bar input::placeholder { color: var(--ink-faint); font-style: italic; }
+    .search-count {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.02em;
+        color: var(--ink-soft);
+        min-width: 44px;
+        text-align: right;
+        padding: 0 4px;
+        white-space: nowrap;
+    }
+    .search-count.empty { color: var(--ink-faint); font-style: italic; }
+    .search-bar button {
+        background: none;
+        border: none;
+        width: 24px; height: 24px;
+        border-radius: 50%;
+        padding: 0;
+        color: var(--ink-soft);
+        cursor: pointer;
+        font-family: var(--sans);
+        font-size: 13px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.15s, color 0.15s;
+    }
+    .search-bar button:hover:not(:disabled) {
+        background: rgba(21,20,15,0.06);
+        color: var(--ink);
+    }
+    .search-bar button:disabled {
+        color: var(--ink-faint);
+        cursor: default;
+    }
+    .search-close {
+        margin-left: 2px;
+        font-size: 16px !important;
+    }
+
+    mark.search-match {
+        background: var(--accent-soft);
+        color: inherit;
+        padding: 0 1px;
+        border-radius: 1px;
+        transition: background 0.15s;
+    }
+    mark.search-match.active {
+        background: var(--accent);
+        color: var(--paper);
+        box-shadow: 0 0 0 1px var(--accent);
+    }
+    /* If the active match is inside a faded satellite (Layer 4 default opacity
+       is 0.3), pop the satellite to full opacity so the match is readable. */
+    .viewport.layer-4 .endorser-satellite.search-active-container {
+        opacity: 1;
+        z-index: 4;
+    }
 
     /* ============== INLINE FORM ============== */
     .inline-form {
@@ -1108,6 +1203,14 @@
     </nav>
     <button class="view-reset hidden" id="viewReset" title="Discard your personal arrangement">Reset</button>
     <button class="help-btn" id="helpBtn" title="About this variorum">?</button>
+</div>
+
+<div class="search-bar" id="searchBar">
+    <input type="text" id="searchInput" placeholder="Search the variorum…" autocomplete="off" spellcheck="false">
+    <div class="search-count empty" id="searchCount">·</div>
+    <button id="searchPrev" title="Previous match (Shift+Enter)">↑</button>
+    <button id="searchNext" title="Next match (Enter)">↓</button>
+    <button id="searchClose" class="search-close" title="Close (Esc)">×</button>
 </div>
 
 <div class="viewport layer-1 hidden" id="viewport">
@@ -1956,6 +2059,21 @@
         if (overlay) overlay.innerHTML = renderAddForm();
 
         bindHandlers();
+
+        // Re-apply search after re-render so marks survive state changes
+        if (searchOpen) {
+            const q = document.getElementById('searchInput').value;
+            if (q && q.trim()) {
+                // Preserve active index across re-renders (best-effort)
+                const prevIdx = searchActiveIdx;
+                performSearch(q);
+                if (searchMatches.length > 0 && prevIdx >= 0 && prevIdx < searchMatches.length) {
+                    searchActiveIdx = prevIdx;
+                    activateMatch(prevIdx);
+                    updateSearchUI();
+                }
+            }
+        }
     }
 
     function renderConnections() {
@@ -2312,12 +2430,15 @@
             const positionId = getPositionForWitness(w.id);
             const posColor = positionColor(positionId);
             const colorStyle = posColor ? ` border-left: 3px solid ${posColor};` : '';
+            // When the witness is the engaged one, pre-apply related-active so
+            // its satellites pop to full opacity beyond the hover state.
+            const engagedCls = (w.id === engagedWitnessId) ? ' related-active' : '';
             endorsements.forEach((e, i) => {
                 const angle = baseAngle + (i - (endorsements.length - 1)/2) * spread;
                 const sx = ip.x + Math.cos(angle) * radius;
                 const sy = ip.y + Math.sin(angle) * radius;
                 const siglaHtml = w.sigla ? `<span class="sigla satellite-sigla">${escapeHtml(w.sigla)}</span>` : '';
-                html += `<div class="endorser-satellite" style="left:${sx}px;top:${sy}px;${colorStyle}" data-satellite-for="${w.id}">
+                html += `<div class="endorser-satellite${engagedCls}" style="left:${sx}px;top:${sy}px;${colorStyle}" data-satellite-for="${w.id}">
                     <div class="satellite-name">${siglaHtml}${escapeHtml(e.endorser)}${e.date ? ` <span style="font-style:italic;color:var(--ink-soft);font-weight:normal;font-size:11px;">· ${escapeHtml(e.date)}</span>` : ''}</div>
                     <div class="satellite-reasoning">${escapeHtml(e.reasoning)}</div>
                 </div>`;
@@ -2345,7 +2466,7 @@
                     const angle = clusterAngle + (i - (pos.endorsements.length - 1) / 2) * spread;
                     const sx = anchorPos.x + Math.cos(angle) * radius;
                     const sy = anchorPos.y + Math.sin(angle) * radius;
-                    html += `<div class="endorser-satellite position-satellite" style="left:${sx}px;top:${sy}px;${colorStyle}" data-position-satellite="${crux.id}-${pos.id}">
+                    html += `<div class="endorser-satellite position-satellite" style="left:${sx}px;top:${sy}px;${colorStyle}" data-position-satellite="${crux.id}-${pos.id}" data-crux-id="${crux.id}">
                         <div class="satellite-name"><span class="position-tag" style="${tagStyle}">${escapeHtml(pos.label)}</span>${escapeHtml(e.endorser)}${e.date ? ` <span style="font-style:italic;color:var(--ink-soft);font-weight:normal;font-size:11px;">· ${escapeHtml(e.date)}</span>` : ''}</div>
                         <div class="satellite-reasoning">${escapeHtml(e.reasoning)}</div>
                     </div>`;
@@ -2390,9 +2511,182 @@
             <p class="about-section-label">Adding to the apparatus</p>
             <p>Click any word in the reading copy to propose a new crux at that location. Double-click an empty area of the canvas at Layer 3 or 4 to add a new position to an existing stanza-level crux. Cards you've added show a "remove" affordance on hover, visible only to you. Your endorsements on others' cards can be withdrawn the same way.</p>
 
+            <p class="about-section-label">Searching</p>
+            <p>Press <span class="mono">/</span> or <span class="mono">⌘F</span> to search the variorum. The search reads what's currently on screen — text in the reading copy, witness cards, satellites, and the manuscript caption. Switching layers widens the search; engaging a card reveals its apparatus. Use <span class="mono">Enter</span> and <span class="mono">Shift+Enter</span> to cycle through matches; the viewport pans to centre each one.</p>
+
             <p class="about-section-label">What this is</p>
             <p>An open prototype, not a finished tool. The seeded scholars are fictional, given the kinds of arguments real scholars have made about this work. The thresholds and governance model are first drafts. Built to be argued with.</p>
         </div>`;
+    }
+
+    // ============================================================
+    // SEARCH
+    // A lightweight Cmd+F replacement. Walks the visible DOM at the
+    // current layer, wraps matches in <mark> tags, lets the user cycle
+    // through them with Enter / Shift+Enter, and pans the viewport to
+    // center on the active match's containing card.
+    //
+    // Limitations:
+    // - Searches only what's currently rendered. Content hidden behind
+    //   layer state (e.g. satellites at Layer 4 when you're at Layer 1)
+    //   or behind engagement (a witness's apparatus when not engaged) is
+    //   not visited. Switch layers / engage a card to widen the search.
+    // - Marks are wiped by any re-render. That's the right behavior —
+    //   search results invalidate on canvas state change.
+    // ============================================================
+    let searchOpen = false;
+    let searchMatches = [];  // array of <mark> DOM elements
+    let searchActiveIdx = -1;
+    const SEARCH_CONTAINERS = '.manuscript-card, .reading-copy, .card, .endorser-satellite';
+
+    function openSearch() {
+        searchOpen = true;
+        const bar = document.getElementById('searchBar');
+        const input = document.getElementById('searchInput');
+        bar.classList.add('open');
+        input.focus();
+        input.select();
+    }
+
+    function closeSearch() {
+        searchOpen = false;
+        const bar = document.getElementById('searchBar');
+        bar.classList.remove('open');
+        document.getElementById('searchInput').value = '';
+        clearSearchHighlights();
+        searchMatches = [];
+        searchActiveIdx = -1;
+        updateSearchUI();
+    }
+
+    function clearSearchHighlights() {
+        document.querySelectorAll('mark.search-match').forEach(mark => {
+            const parent = mark.parentNode;
+            if (!parent) return;
+            parent.replaceChild(document.createTextNode(mark.textContent), mark);
+            parent.normalize();  // merge adjacent text nodes back together
+        });
+    }
+
+    function performSearch(query) {
+        clearSearchHighlights();
+        searchMatches = [];
+        searchActiveIdx = -1;
+        const q = (query || '').trim();
+        if (!q) { updateSearchUI(); return; }
+        const qLower = q.toLowerCase();
+
+        document.querySelectorAll(SEARCH_CONTAINERS).forEach(container => {
+            // Collect text nodes first; can't mutate while walking
+            const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+                acceptNode(node) {
+                    // Skip empty/whitespace-only nodes and nodes inside already-marked content
+                    if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+                    if (node.parentNode && node.parentNode.tagName === 'MARK') return NodeFilter.FILTER_REJECT;
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            });
+            const nodes = [];
+            let n;
+            while ((n = walker.nextNode())) nodes.push(n);
+
+            nodes.forEach(node => {
+                const text = node.nodeValue;
+                const lower = text.toLowerCase();
+                let idx = lower.indexOf(qLower);
+                if (idx === -1) return;
+
+                // Build a fragment with all occurrences highlighted
+                const frag = document.createDocumentFragment();
+                let cursor = 0;
+                while (idx !== -1) {
+                    if (idx > cursor) {
+                        frag.appendChild(document.createTextNode(text.substring(cursor, idx)));
+                    }
+                    const mark = document.createElement('mark');
+                    mark.className = 'search-match';
+                    mark.textContent = text.substring(idx, idx + q.length);
+                    frag.appendChild(mark);
+                    searchMatches.push(mark);
+                    cursor = idx + q.length;
+                    idx = lower.indexOf(qLower, cursor);
+                }
+                if (cursor < text.length) {
+                    frag.appendChild(document.createTextNode(text.substring(cursor)));
+                }
+                node.parentNode.replaceChild(frag, node);
+            });
+        });
+
+        if (searchMatches.length > 0) {
+            searchActiveIdx = 0;
+            activateMatch(0);
+        }
+        updateSearchUI();
+    }
+
+    function activateMatch(idx) {
+        // Clear previous active state on all marks and containers
+        document.querySelectorAll('mark.search-match.active').forEach(m => m.classList.remove('active'));
+        document.querySelectorAll('.search-active-container').forEach(el => el.classList.remove('search-active-container'));
+        if (idx < 0 || idx >= searchMatches.length) return;
+        const mark = searchMatches[idx];
+        mark.classList.add('active');
+        // If the active match is inside a faded satellite, pop the satellite
+        // so the match is actually readable.
+        let parent = mark.parentElement;
+        while (parent && parent !== document.body) {
+            if (parent.classList && parent.classList.contains('endorser-satellite')) {
+                parent.classList.add('search-active-container');
+                break;
+            }
+            parent = parent.parentElement;
+        }
+        scrollToMatch(mark);
+    }
+
+    function nextMatch()  { if (searchMatches.length === 0) return; searchActiveIdx = (searchActiveIdx + 1) % searchMatches.length; activateMatch(searchActiveIdx); updateSearchUI(); }
+    function prevMatch()  { if (searchMatches.length === 0) return; searchActiveIdx = (searchActiveIdx - 1 + searchMatches.length) % searchMatches.length; activateMatch(searchActiveIdx); updateSearchUI(); }
+
+    function scrollToMatch(mark) {
+        // Walk up to the nearest positioned canvas object (card / manuscript
+        // / reading copy / satellite). Pan the viewport so that the object's
+        // screen-space center lands at the viewport center.
+        let el = mark;
+        while (el && el !== document.body) {
+            if (el.matches && el.matches('.manuscript-card, .reading-copy, .card, .endorser-satellite')) break;
+            el = el.parentElement;
+        }
+        if (!el || el === document.body) return;
+        const elRect = el.getBoundingClientRect();
+        const elCenterX = elRect.left + elRect.width / 2;
+        const elCenterY = elRect.top + elRect.height / 2;
+        const vp = viewport.getBoundingClientRect();
+        const vpCenterX = vp.left + vp.width / 2;
+        const vpCenterY = vp.top + vp.height / 2;
+        const dx = vpCenterX - elCenterX;
+        const dy = vpCenterY - elCenterY;
+        // animateTransform applies pan in screen coords too, so just add dx/dy
+        animateTransform(panX + dx, panY + dy, zoom);
+    }
+
+    function updateSearchUI() {
+        const countEl = document.getElementById('searchCount');
+        const prev = document.getElementById('searchPrev');
+        const next = document.getElementById('searchNext');
+        const query = document.getElementById('searchInput').value.trim();
+        if (!query) {
+            countEl.textContent = '·';
+            countEl.classList.add('empty');
+        } else if (searchMatches.length === 0) {
+            countEl.textContent = 'no matches';
+            countEl.classList.add('empty');
+        } else {
+            countEl.textContent = `${searchActiveIdx + 1} / ${searchMatches.length}`;
+            countEl.classList.remove('empty');
+        }
+        prev.disabled = searchMatches.length === 0;
+        next.disabled = searchMatches.length === 0;
     }
 
     // ============================================================
@@ -2489,19 +2783,39 @@
             submitProposeCruxAt();
         });
 
+        // Witness-satellite hover: pop the whole group of satellites belonging
+        // to the same witness, and highlight the parent card. On mouseleave,
+        // preserve the popped state if the witness is currently engaged (it
+        // was baked in at render time and should outlive transient hovers).
         document.querySelectorAll('.endorser-satellite[data-satellite-for]').forEach(satEl => {
             const witnessId = satEl.dataset.satelliteFor;
             satEl.addEventListener('mouseenter', () => {
-                satEl.classList.add('related-active');
+                document.querySelectorAll(`.endorser-satellite[data-satellite-for="${witnessId}"]`).forEach(s => s.classList.add('related-active'));
                 const card = document.querySelector(`[data-witness="${witnessId}"]`);
                 if (card) card.classList.add('related-active');
             });
             satEl.addEventListener('mouseleave', () => {
-                satEl.classList.remove('related-active');
                 const card = document.querySelector(`[data-witness="${witnessId}"]`);
                 if (card) card.classList.remove('related-active');
+                if (witnessId === engagedWitnessId) return;  // engaged: stay popped
+                document.querySelectorAll(`.endorser-satellite[data-satellite-for="${witnessId}"]`).forEach(s => s.classList.remove('related-active'));
             });
         });
+
+        // Position-satellite hover: pop the whole crux cluster (every position
+        // satellite belonging to the same crux). Position satellites are not
+        // tied to a witness and have no engagement state, so this is pure hover.
+        document.querySelectorAll('.endorser-satellite[data-crux-id]').forEach(satEl => {
+            const cruxId = satEl.dataset.cruxId;
+            satEl.addEventListener('mouseenter', () => {
+                document.querySelectorAll(`.endorser-satellite[data-crux-id="${cruxId}"]`).forEach(s => s.classList.add('related-active'));
+            });
+            satEl.addEventListener('mouseleave', () => {
+                document.querySelectorAll(`.endorser-satellite[data-crux-id="${cruxId}"]`).forEach(s => s.classList.remove('related-active'));
+            });
+        });
+
+        // Witness-card hover: pop all satellites belonging to this witness.
         document.querySelectorAll('[data-witness]').forEach(card => {
             const witnessId = card.dataset.witness;
             card.addEventListener('mouseenter', () => {
@@ -2509,6 +2823,7 @@
                 document.querySelectorAll(`.endorser-satellite[data-satellite-for="${witnessId}"]`).forEach(s => s.classList.add('related-active'));
             });
             card.addEventListener('mouseleave', () => {
+                if (witnessId === engagedWitnessId) return;  // engaged: stay popped
                 document.querySelectorAll(`.endorser-satellite[data-satellite-for="${witnessId}"]`).forEach(s => s.classList.remove('related-active'));
             });
         });
@@ -2636,7 +2951,26 @@
     });
 
     document.addEventListener('keydown', e => {
+        // Search: Cmd/Ctrl+F always opens (overrides browser find).
+        if ((e.metaKey || e.ctrlKey) && (e.key === 'f' || e.key === 'F')) {
+            e.preventDefault();
+            openSearch();
+            return;
+        }
+        // Escape: if search is open, close it first (regardless of focus).
+        if (e.key === 'Escape' && searchOpen) {
+            e.preventDefault();
+            closeSearch();
+            return;
+        }
+        // All other shortcuts: ignore when typing in inputs.
         if (e.target.matches('input, textarea')) return;
+        // / opens search (when not typing).
+        if (e.key === '/') {
+            e.preventDefault();
+            openSearch();
+            return;
+        }
         if (e.key >= '1' && e.key <= '4') {
             setLayer(parseInt(e.key));
         } else if (e.key === '=' || e.key === '+') {
@@ -2659,6 +2993,28 @@
             }
         }
     });
+
+    // Search input + buttons (one-time wiring, since these live outside the canvas)
+    const searchInput = document.getElementById('searchInput');
+    let searchDebounce;
+    searchInput.addEventListener('input', () => {
+        // Light debounce so typing doesn't churn the DOM
+        clearTimeout(searchDebounce);
+        searchDebounce = setTimeout(() => performSearch(searchInput.value), 80);
+    });
+    searchInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            if (e.shiftKey) prevMatch(); else nextMatch();
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault(); nextMatch();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault(); prevMatch();
+        }
+    });
+    document.getElementById('searchPrev').addEventListener('click', () => { prevMatch(); searchInput.focus(); });
+    document.getElementById('searchNext').addEventListener('click', () => { nextMatch(); searchInput.focus(); });
+    document.getElementById('searchClose').addEventListener('click', closeSearch);
 
     document.getElementById('helpBtn').addEventListener('click', () => {
         aboutOpen = !aboutOpen;
