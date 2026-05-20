@@ -1322,11 +1322,76 @@
     let dragState = null;
     let justDragged = false;
 
+    // Reading-copy line metrics — must match CSS (.reading-copy: font-size 19,
+    // line-height 1.85 → ~35.15 → round to 35; .rc-stanza margin-bottom 22;
+    // .reading-copy padding 50/40).
+    const RC_LINE_HEIGHT = 35;
+    const RC_STANZA_GAP = 22;
+    const RC_PADDING_TOP = 50;
+    const RC_WIDTH = 440;
+    const ALGO_WITNESS_OFFSET_X = 380;   // distance right of reading-copy edge
+    const ALGO_WITNESS_STACK_X = 360;    // additional offset per position index
+    const algoPositionCache = {};
+
+    function computeAnchorY(anchor) {
+        // Y-coord of the anchor line in canvas space. Reading copy is centered
+        // vertically at readingCopy.position.y with translate(-50%, -50%), so the
+        // top edge is at (rc.y - rcHeight/2). Add padding + cumulative line offset.
+        const rc = workData.readingCopy || {};
+        const stanzas = rc.stanzas || [];
+        const rcY = (rc.position && typeof rc.position.y === 'number') ? rc.position.y : 0;
+        // Total rc height
+        let totalLines = 0;
+        stanzas.forEach(s => { totalLines += (s.lines || []).length; });
+        const rcHeight = RC_PADDING_TOP * 2 + totalLines * RC_LINE_HEIGHT + Math.max(0, stanzas.length - 1) * RC_STANZA_GAP;
+        const rcTop = rcY - rcHeight / 2;
+        // Walk to the target stanza/line
+        let offset = RC_PADDING_TOP;
+        for (const s of stanzas) {
+            if (s.id === anchor.stanzaId) {
+                offset += (anchor.lineIdx || 0) * RC_LINE_HEIGHT + RC_LINE_HEIGHT / 2;
+                return rcTop + offset;
+            }
+            offset += (s.lines || []).length * RC_LINE_HEIGHT + RC_STANZA_GAP;
+        }
+        // Stanza not found — fall back to center
+        return rcY;
+    }
+
+    function computeAlgorithmicPosition(witnessId) {
+        if (algoPositionCache[witnessId]) return algoPositionCache[witnessId];
+        // Find the first crux + position-index that references this witness
+        let foundCrux = null;
+        let foundPosIdx = 0;
+        for (const c of cruxes) {
+            const idx = (c.positions || []).findIndex(p => p.witnessId === witnessId);
+            if (idx >= 0) { foundCrux = c; foundPosIdx = idx; break; }
+        }
+        if (!foundCrux || !foundCrux.anchor) {
+            // No anchor — place at origin (validator should have caught this case)
+            const fallback = { x: 0, y: 0 };
+            algoPositionCache[witnessId] = fallback;
+            return fallback;
+        }
+        const rc = workData.readingCopy || {};
+        const rcX = (rc.position && typeof rc.position.x === 'number') ? rc.position.x : 0;
+        const rcRightEdge = rcX + RC_WIDTH / 2;
+        const x = rcRightEdge + ALGO_WITNESS_OFFSET_X + foundPosIdx * ALGO_WITNESS_STACK_X;
+        const y = computeAnchorY(foundCrux.anchor);
+        const pos = { x, y };
+        algoPositionCache[witnessId] = pos;
+        return pos;
+    }
+
     function getWitnessPosition(w) {
         if (viewMode === 'personal' && personalPositions[w.id]) {
             return personalPositions[w.id];
         }
-        return { x: w.position.x, y: w.position.y };
+        if (w.position && typeof w.position.x === 'number' && typeof w.position.y === 'number') {
+            return { x: w.position.x, y: w.position.y };
+        }
+        // Algorithmic layout: compute from the witness's first crux anchor
+        return computeAlgorithmicPosition(w.id);
     }
 
     const viewport = document.getElementById('viewport');
@@ -2424,8 +2489,22 @@
     function renderSatellites() {
         let html = '';
         witnesses.forEach(w => {
-            if (!w.apparatus || !w.apparatus.endorsements || !w.apparatus.endorsements.length) return;
-            const endorsements = w.apparatus.endorsements;
+            // Aggregate this witness's endorsements from two sources:
+            // (1) the witness's own apparatus.endorsements (Fr124-style: scholars
+            // endorsing the witness as evidence), and (2) any crux position that
+            // references this witness via witnessId (Rilke-style: scholars
+            // endorsing the translator's choice at a specific crux). Both render
+            // as satellites around the witness card.
+            const ownEndorsements = (w.apparatus && w.apparatus.endorsements) || [];
+            const positionEndorsements = [];
+            cruxes.forEach(crux => {
+                (crux.positions || []).forEach(pos => {
+                    if (pos.witnessId !== w.id) return;
+                    (pos.endorsements || []).forEach(e => positionEndorsements.push(e));
+                });
+            });
+            const endorsements = [...ownEndorsements, ...positionEndorsements];
+            if (!endorsements.length) return;
             const ip = getWitnessPosition(w);
             const baseAngle = Math.atan2(ip.y, ip.x) + Math.PI/2;
             const radius = (w.type === 'manuscript' ? 380 : 240);

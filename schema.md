@@ -178,6 +178,8 @@ A witness with `type: "source"` is rendered as an orbital card at Layer 3 — a 
 
 `position` is the canvas position in pixels — Layer 3 places cards in fixed orbital positions around the manuscript at center. Cards drift outward as more accumulate; the author chooses positions to compose a visual argument (Sue's letter at the top-right; the cosmic *Grand go* at upper-right; the cold *Springs — shake the Sills* at lower-left). The engine respects these positions exactly.
 
+For long-text works (translations, multi-page prose), hand-curating each witness's position becomes unrealistic. `position` is therefore optional: when absent, the engine computes the position algorithmically from the first crux that references the witness via `witnessId`. The witness card lands to the right of the reading copy, vertically aligned with the anchor line, and stacks horizontally by position-index so multiple witnesses at the same crux don't overlap. The validator requires that any position-less witness be reachable via at least one crux — otherwise algorithmic layout has nothing to anchor to. Mix hardcoded and algorithmic in the same work: the manuscript witness usually gets a hardcoded position (it anchors the composition); translation witnesses or other secondary witnesses can default to algorithmic.
+
 `stagger` (0–7) controls the fade-in delay when transitioning to Layer 3, in steps of 30ms. Useful for choreographing the moment the apparatus blooms.
 
 `body` is the text shown on the card. `multiline: true` preserves newlines; `quoted: true` adds the italic + left-rule quote treatment.
