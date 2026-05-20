@@ -1330,7 +1330,7 @@
     const RC_PADDING_TOP = 50;
     const RC_WIDTH = 440;
     const ALGO_WITNESS_OFFSET_X = 380;   // distance right of reading-copy edge
-    const ALGO_WITNESS_STACK_X = 360;    // additional offset per position index
+    const ALGO_WITNESS_STACK_X = 540;    // additional offset per position index
     const algoPositionCache = {};
 
     function computeAnchorY(anchor) {
@@ -1685,11 +1685,18 @@
         const contentH = maxY - minY;
         const zoomX = (r.width  - margin*2) / contentW;
         const zoomY = (r.height - margin*2) / contentH;
-        const targetZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, Math.min(zoomX, zoomY)));
+        // For tall content (long-text works), width-fit and top-align rather
+        // than cramming the full vertical span into the viewport — otherwise
+        // text becomes microscopic. User scrolls vertically to read.
+        const isTall = contentH > 2000;
+        const fitZoom = isTall ? zoomX : Math.min(zoomX, zoomY);
+        const targetZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, fitZoom));
         const centerX = (minX + maxX) / 2;
         const centerY = (minY + maxY) / 2;
         const targetPanX = r.width  / 2 - centerX * targetZoom;
-        const targetPanY = r.height / 2 - centerY * targetZoom;
+        const targetPanY = isTall
+            ? margin - minY * targetZoom
+            : r.height / 2 - centerY * targetZoom;
         animateTransform(targetPanX, targetPanY, targetZoom);
     }
 
@@ -2508,7 +2515,7 @@
             const ip = getWitnessPosition(w);
             const baseAngle = Math.atan2(ip.y, ip.x) + Math.PI/2;
             const radius = (w.type === 'manuscript' ? 380 : 240);
-            const spread = endorsements.length > 3 ? 0.32 : 0.42;
+            const spread = endorsements.length > 5 ? 0.22 : endorsements.length > 3 ? 0.32 : 0.42;
             const positionId = getPositionForWitness(w.id);
             const posColor = positionColor(positionId);
             const colorStyle = posColor ? ` border-left: 3px solid ${posColor};` : '';
