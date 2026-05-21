@@ -1,6 +1,6 @@
 # Variorum schema 1.0
 
-A *variorum* in this system is a JSON file at `works/<id>.json` that the engine fetches at boot. The engine is content-agnostic — every textual detail (the witnesses, the cruxes, the manuscript page, the reading copy) lives in the JSON. This document is the contract between a work file and the engine. Reading it should be sufficient to write a second work.
+A *variorum* in this system is a JSON file at `works/<id>.json` that the engine fetches at boot. The engine is content-agnostic — every textual detail (the witnesses, the cruxes, the manuscript page, the reading copy) lives in the JSON. This document is the contract between a work file and the engine. Reading it should be sufficient to author a new work from scratch.
 
 ## The five entities
 
@@ -22,7 +22,7 @@ A **Connection** is the optional sixth entity: a manuscript-historical link betw
 
 The one place where medium-specificity lives is the **anchor** on a Crux. For a poem, an anchor is `{ stanzaId, lineIdx, originalWord }`. For a Bach invention it might be `{ measureNum, beat, voice }`. For a translation, `{ sourceLineIdx, targetLineIdx }`. The rest of the model (positions, endorsements, governance) is mode-agnostic.
 
-Schema 1.0 only formally specifies the poem anchor shape, because Dickinson is the only work it has met. When the second work arrives, the anchor type set will expand and the engine will need a small dispatch to render anchors of new kinds. That is a foreseeable seam, deliberately not engineered yet.
+Schema 1.0 only formally specifies the poem anchor shape. The three text works seeded so far (Dickinson Fr124, Shakespeare Sonnet 116, Rilke First Elegy, Sappho 31) all use the poem anchor; non-text works (a Bach score, say) will require an anchor expansion and a small engine dispatch to render new anchor kinds. That is a foreseeable seam, deliberately not engineered yet.
 
 The current poem-anchor shape:
 
@@ -77,7 +77,7 @@ The manuscript card is the visual heart of Layer 1. A work can render it in two 
 ```json
 "manuscriptRendering": {
   "image": {
-    "src": "works/fr124-fascicle-6.jpg",
+    "src": "works/fr124/fascicle-6.jpg",
     "alt": "Manuscript page of Fr124, Fascicle 6...",
     "credit": "Courtesy Houghton Library, Harvard University..."
   },
@@ -178,8 +178,6 @@ A witness with `type: "source"` is rendered as an orbital card at Layer 3 — a 
 
 `position` is the canvas position in pixels — Layer 3 places cards in fixed orbital positions around the manuscript at center. Cards drift outward as more accumulate; the author chooses positions to compose a visual argument (Sue's letter at the top-right; the cosmic *Grand go* at upper-right; the cold *Springs — shake the Sills* at lower-left). The engine respects these positions exactly.
 
-For long-text works (translations, multi-page prose), hand-curating each witness's position becomes unrealistic. `position` is therefore optional: when absent, the engine computes the position algorithmically from the first crux that references the witness via `witnessId`. The witness card lands to the right of the reading copy, vertically aligned with the anchor line, and stacks horizontally by position-index so multiple witnesses at the same crux don't overlap. The validator requires that any position-less witness be reachable via at least one crux — otherwise algorithmic layout has nothing to anchor to. Mix hardcoded and algorithmic in the same work: the manuscript witness usually gets a hardcoded position (it anchors the composition); translation witnesses or other secondary witnesses can default to algorithmic.
-
 `stagger` (0–7) controls the fade-in delay when transitioning to Layer 3, in steps of 30ms. Useful for choreographing the moment the apparatus blooms.
 
 `body` is the text shown on the card. `multiline: true` preserves newlines; `quoted: true` adds the italic + left-rule quote treatment.
@@ -272,15 +270,15 @@ The practical workflow:
    ```
    The validator catches missing required fields, broken references, duplicate ids, and structural issues. The engine runs the same referential checks at boot and shows precise errors in the load screen if anything is wrong, but catching them before deploy is faster.
 
-The fastest way to start a second work is to copy `works/_template.json` — a valid skeleton with placeholder content — to `works/<your-id>.json` and replace the placeholders piece by piece. The schema is small enough that a competent author can write a new variorum in an afternoon if the underlying scholarship is in hand.
+The fastest way to start a new work is to copy `works/_template.json` — a valid skeleton with placeholder content — to `works/<your-id>.json` and replace the placeholders piece by piece. The schema is small enough that a competent author can write a new variorum in an afternoon if the underlying scholarship is in hand.
 
 ## What schema 1.0 doesn't yet specify
 
 A short list of things deliberately left for later, in case you bump into them:
 
-- **Multiple anchor types.** Only the poem anchor is formalised. The second non-text work will require a small expansion.
+- **Multiple anchor types.** Only the poem anchor is formalised. The first non-text work (a Bach score, say) will require a small expansion.
 - **Per-work governance thresholds.** Currently the engine hardcodes 3-for-recognized, 5-for-canonical. Per-work thresholds would let editorial communities calibrate.
 - **Shared (server-side) endorsement state.** Currently all user state is per-browser via localStorage. A real platform needs a back-end. The schema is designed not to depend on this — endorsements can be merged from any source — but the engine is.
 - **Comments on endorsements, threading, retraction histories.** The current endorsement model is flat. A scholar can withdraw their own endorsement but cannot reply to another's, and the system keeps no audit trail. These will matter when real scholars use it.
 
-These are the seams a second demo will press on. Press them gently.
+These are the seams future works will press on. Press them gently.

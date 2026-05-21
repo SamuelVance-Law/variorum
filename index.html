@@ -1,293 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Variorum</title>
-<meta name="description" content="A platform for digital scholarly editions that preserve textual variants alongside the reasoning of their editors.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-    :root {
-        --paper:       #F1EDE4;
-        --paper-warm:  #ECE6D7;
-        --paper-deep:  #E4DEC9;
-        --ink:         #15140F;
-        --ink-mid:     #4A463E;
-        --ink-soft:    #807968;
-        --ink-faint:   #B6AC95;
-        --rule:        rgba(21,20,15,0.18);
-        --rule-soft:   rgba(21,20,15,0.10);
-        --accent:      #6E1E1E;
-        --accent-soft: rgba(110,30,30,0.10);
-        --accent-mid:  rgba(110,30,30,0.45);
-        --mono:        'JetBrains Mono', 'SF Mono', 'Menlo', monospace;
-        --sans:        'Instrument Sans', system-ui, sans-serif;
-        --serif:       'EB Garamond', Georgia, serif;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-        background: var(--paper);
-        color: var(--ink);
-        font-family: var(--serif);
-        font-size: 17px;
-        line-height: 1.65;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variorum</title>
 
-    main {
-        max-width: 640px;
-        margin: 0 auto;
-        padding: 100px 32px 120px;
-    }
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23F7F4EE'/%3E%3Ctext x='16' y='22' font-family='JetBrains Mono,monospace' font-size='18' font-weight='700' text-anchor='middle' fill='%231C1917'%3EV%3C/text%3E%3C/svg%3E">
 
-    /* ============== HEADER ============== */
-    .site-header {
-        margin-bottom: 56px;
-    }
-    .site-title {
-        font-family: var(--serif);
-        font-size: 44px;
-        font-weight: 500;
-        letter-spacing: -0.01em;
-        line-height: 1.1;
-        color: var(--ink);
-        margin-bottom: 12px;
-    }
-    .site-tagline {
-        font-family: var(--serif);
-        font-style: italic;
-        font-size: 18px;
-        color: var(--ink-mid);
-        line-height: 1.5;
-        max-width: 520px;
-    }
+    <meta property="og:title" content="Variorum">
+    <meta property="og:description" content="Scholarly editions that preserve the variants alongside the reasoning of their editors.">
+    <meta name="twitter:card" content="summary">
 
-    /* ============== INTRO ============== */
-    .intro {
-        margin-bottom: 64px;
-    }
-    .intro p {
-        margin-bottom: 14px;
-        color: var(--ink-mid);
-    }
-    .intro p:last-child { margin-bottom: 0; }
-    .intro em { color: var(--ink); font-style: italic; }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-    /* ============== SECTION LABEL ============== */
-    .section-label {
-        font-family: var(--sans);
-        font-size: 11px;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.10em;
-        color: var(--ink-soft);
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid var(--rule-soft);
-    }
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* ============== WORKS ============== */
-    .works {
-        margin-bottom: 64px;
-    }
-    .work-card {
-        display: block;
-        text-decoration: none;
-        color: inherit;
-        padding: 22px 24px 24px;
-        background: var(--paper-warm);
-        border: 1px solid var(--rule-soft);
-        margin-bottom: 16px;
-        transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-        position: relative;
-    }
-    .work-card:hover {
-        border-color: var(--accent-mid);
-        box-shadow: 0 4px 14px rgba(21,20,15,0.08);
-        transform: translateY(-1px);
-    }
-    .work-card:last-child { margin-bottom: 0; }
+        :root {
+            --bg: #F7F4EE;
+            --ink: #1C1917;
+            --mid: #57534E;
+            --light: #6B6660;
+            --dim: #8C857E;
+            --rule: #D6D3D1;
+            --rule-light: #E7E5E4;
+        }
 
-    .work-card-header {
-        display: flex;
-        align-items: baseline;
-        gap: 14px;
-        margin-bottom: 8px;
-        flex-wrap: wrap;
-    }
-    .work-id {
-        font-family: var(--mono);
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        color: var(--ink);
-        padding: 2px 6px;
-        background: rgba(21,20,15,0.06);
-        border-radius: 2px;
-    }
-    .work-meta {
-        font-family: var(--sans);
-        font-size: 11px;
-        font-weight: 400;
-        letter-spacing: 0.02em;
-        color: var(--ink-soft);
-    }
-    .work-arrow {
-        margin-left: auto;
-        font-family: var(--sans);
-        font-size: 12px;
-        font-weight: 500;
-        color: var(--ink-soft);
-        transition: color 0.2s, transform 0.2s;
-    }
-    .work-card:hover .work-arrow {
-        color: var(--accent);
-        transform: translateX(3px);
-    }
-    .work-title {
-        font-family: var(--serif);
-        font-size: 22px;
-        font-weight: 500;
-        font-style: italic;
-        color: var(--ink);
-        line-height: 1.25;
-        margin-bottom: 4px;
-    }
-    .work-author {
-        font-family: var(--sans);
-        font-size: 12px;
-        font-weight: 500;
-        letter-spacing: 0.02em;
-        color: var(--ink-mid);
-        margin-bottom: 12px;
-    }
-    .work-description {
-        font-family: var(--serif);
-        font-size: 14.5px;
-        color: var(--ink-mid);
-        line-height: 1.55;
-    }
+        html, body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 18px;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-    /* ============== AUTHORING ============== */
-    .authoring {
-        margin-bottom: 64px;
-    }
-    .authoring p {
-        font-family: var(--serif);
-        font-size: 15px;
-        color: var(--ink-mid);
-        line-height: 1.6;
-        margin-bottom: 14px;
-    }
-    .authoring p:last-child { margin-bottom: 0; }
-    .authoring code {
-        font-family: var(--mono);
-        font-size: 13px;
-        padding: 1px 6px;
-        background: rgba(21,20,15,0.06);
-        border-radius: 2px;
-        color: var(--ink);
-    }
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 96px 32px 120px;
+        }
 
-    /* ============== FOOTER ============== */
-    footer {
-        padding-top: 28px;
-        border-top: 1px solid var(--rule-soft);
-        display: flex;
-        flex-wrap: wrap;
-        gap: 24px;
-        align-items: baseline;
-    }
-    footer a {
-        font-family: var(--sans);
-        font-size: 12px;
-        font-weight: 500;
-        letter-spacing: 0.02em;
-        color: var(--ink-soft);
-        text-decoration: none;
-        border-bottom: 1px solid var(--rule);
-        padding-bottom: 1px;
-        transition: color 0.15s, border-color 0.15s;
-    }
-    footer a:hover {
-        color: var(--accent);
-        border-bottom-color: var(--accent);
-    }
-    footer .footer-note {
-        margin-left: auto;
-        font-family: var(--serif);
-        font-style: italic;
-        font-size: 12px;
-        color: var(--ink-faint);
-    }
+        @media (max-width: 640px) {
+            .page { padding: 56px 22px 80px; }
+        }
 
-    /* ============== MOBILE ============== */
-    @media (max-width: 600px) {
-        main { padding: 64px 24px 80px; }
-        .site-title { font-size: 36px; }
-        .site-tagline { font-size: 16px; }
-        .work-card { padding: 18px 20px 20px; }
-        .work-title { font-size: 19px; }
-        footer { flex-direction: column; gap: 12px; }
-        footer .footer-note { margin-left: 0; }
-    }
-</style>
+        /* ===== Header ===== */
+        .masthead {
+            margin-bottom: 56px;
+        }
+        .masthead .eyebrow {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--light);
+            margin-bottom: 18px;
+        }
+        .masthead h1 {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-weight: 500;
+            font-size: 64px;
+            line-height: 1;
+            letter-spacing: -0.01em;
+            margin-bottom: 18px;
+        }
+        .masthead .tagline {
+            font-style: italic;
+            font-size: 20px;
+            color: var(--mid);
+            max-width: 540px;
+        }
+
+        @media (max-width: 640px) {
+            .masthead h1 { font-size: 48px; }
+            .masthead .tagline { font-size: 18px; }
+        }
+
+        /* ===== Intro ===== */
+        .intro {
+            margin-bottom: 64px;
+            font-size: 18px;
+            line-height: 1.65;
+            color: var(--ink);
+        }
+        .intro p + p {
+            margin-top: 16px;
+        }
+        .intro em {
+            font-style: italic;
+        }
+
+        /* ===== Section labels ===== */
+        .section-label {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--light);
+            border-top: 1px solid var(--rule);
+            padding-top: 12px;
+            margin-bottom: 32px;
+        }
+
+        /* ===== Works listing ===== */
+        .works {
+            margin-bottom: 72px;
+        }
+        .work {
+            display: grid;
+            grid-template-columns: 96px 1fr;
+            gap: 28px;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--rule-light);
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s ease;
+        }
+        .work:hover {
+            background: rgba(0,0,0,0.015);
+        }
+        .work:last-child {
+            border-bottom: 1px solid var(--rule);
+        }
+        .work:first-of-type {
+            border-top: 1px solid var(--rule);
+        }
+
+        .work-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: var(--light);
+            letter-spacing: 0.02em;
+            padding-top: 8px;
+        }
+        .work-meta .sigla {
+            display: inline-block;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ink);
+            border: 1px solid var(--ink);
+            border-radius: 2px;
+            width: 28px;
+            height: 28px;
+            line-height: 26px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .work-meta .date {
+            display: block;
+            margin-top: 2px;
+        }
+        .work-meta .kind {
+            display: block;
+            color: var(--dim);
+            margin-top: 2px;
+        }
+
+        .work-body h2 {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 1.25;
+            color: var(--ink);
+            margin-bottom: 2px;
+        }
+        .work-body .author {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 16px;
+            font-style: italic;
+            color: var(--mid);
+            margin-bottom: 12px;
+        }
+        .work-body .description {
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--ink);
+        }
+        .work-body .open {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--light);
+            margin-top: 14px;
+            display: inline-block;
+        }
+        .work:hover .open {
+            color: var(--ink);
+        }
+        .work:hover .open::after {
+            content: " →";
+        }
+        .work .open::after {
+            content: " ·";
+        }
+
+        @media (max-width: 640px) {
+            .work {
+                grid-template-columns: 76px 1fr;
+                gap: 18px;
+                padding: 24px 0;
+            }
+            .work-body h2 { font-size: 22px; }
+        }
+
+        /* ===== Contribute ===== */
+        .contribute {
+            margin-bottom: 64px;
+        }
+        .contribute p {
+            margin-bottom: 14px;
+        }
+        .contribute a {
+            color: var(--ink);
+            text-decoration: underline;
+            text-decoration-color: var(--dim);
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            transition: text-decoration-color 0.15s ease;
+        }
+        .contribute a:hover {
+            text-decoration-color: var(--ink);
+        }
+        .contribute code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.86em;
+            background: rgba(0,0,0,0.04);
+            padding: 1px 5px;
+            border-radius: 2px;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            border-top: 1px solid var(--rule);
+            padding-top: 24px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 12px;
+            color: var(--light);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .footer a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid var(--rule);
+        }
+        .footer a:hover {
+            border-bottom-color: var(--ink);
+            color: var(--ink);
+        }
+    </style>
 </head>
 <body>
-<main>
 
-    <header class="site-header">
-        <h1 class="site-title">Variorum</h1>
-        <p class="site-tagline">A platform for digital scholarly editions that hold textual variants alongside the reasoning of their editors.</p>
+<main class="page">
+
+    <header class="masthead">
+        <div class="eyebrow">A digital scholarly platform</div>
+        <h1>Variorum</h1>
+        <p class="tagline">Editions that preserve the variants — and the reasoning that produced them.</p>
     </header>
 
     <section class="intro">
-        <p>A <em>variorum</em> is a scholarly edition that preserves textual variants rather than choosing among them. The form has existed since the seventeenth century — Bentley's Horace, the Furness Shakespeares, R. W. Franklin's Dickinson — and has always rested on a quiet collective: editors weighing manuscript witnesses, prior editorial choices, scholarly arguments, and historical context.</p>
-        <p>This platform proposes to make that collective explicit. Each variorum here is a living apparatus: contested moments visible, positions held with reasoning, endorsements tracked with provenance. Reading and editing are the same activity at different intensities.</p>
+        <p>A <em>variorum</em> is a scholarly edition that holds the contested readings of a text together with the editorial arguments that produced them. The form has existed since the seventeenth century — Bentley's <em>Horace</em>, the Furness Shakespeares, R. W. Franklin's Dickinson — and has always rested on a quiet collective of scholars weighing manuscript witnesses, prior editions, letters, and arguments. This platform makes that collective explicit.</p>
+        <p>Each work below presses a different kind of editorial crux. Open one to see the apparatus, propose your own crux at any contested word, or endorse a reading with reasoning.</p>
     </section>
 
     <section class="works">
-        <div class="section-label">Works</div>
 
-        <a class="work-card" href="viewer.html?work=fr124">
-            <div class="work-card-header">
-                <span class="work-id">Fr124</span>
-                <span class="work-meta">ca. 1859–1862</span>
-                <span class="work-arrow">Open →</span>
+        <div class="section-label">Seeded works</div>
+
+        <a class="work" href="viewer.html?work=sappho-31">
+            <div class="work-meta">
+                <span class="sigla">S</span>
+                <span class="date">ca. 600 BCE</span>
+                <span class="kind">reconstruction<br>+ translation</span>
             </div>
-            <div class="work-title">Safe in their Alabaster Chambers</div>
-            <div class="work-author">Emily Dickinson</div>
-            <div class="work-description">A poem whose textual history is already, unusually, a two-person variorum — its second stanza rewritten three times in correspondence with Susan Dickinson, with the original "Light laughs the breeze" preserved beside the cosmic "Grand go the Years" and two further attempts in which spring shakes either the sills or the seals.</div>
+            <div class="work-body">
+                <h2>Sappho 31 <span style="font-style: italic; font-weight: 400;">(φαίνεταί μοι)</span></h2>
+                <div class="author">Sappho</div>
+                <p class="description">The Greek text reaches us only through a 1st-century rhetorician's quotation, transmitted by a 10th-century Byzantine scribe, with two loci desperati where the manuscript transmission fails. Voigt's 1971 critical edition serves as primary, with Catullus's Latin imitation alongside and five English translators — Wharton, Barnard, Carson, Poochigian, Rayor — pressing on the chromatic vs. affective sense of <em>chloros</em>, the reconstruction of the corrupt fourth stanza, and the fragmentary ending.</p>
+                <span class="open">Open</span>
+            </div>
         </a>
 
-        <a class="work-card" href="viewer.html?work=rilke-elegie-1">
-            <div class="work-card-header">
-                <span class="work-id">Erste Elegie</span>
-                <span class="work-meta">1912–1922</span>
-                <span class="work-arrow">Open →</span>
+        <a class="work" href="viewer.html?work=sonnet-116">
+            <div class="work-meta">
+                <span class="sigla">Q</span>
+                <span class="date">1609</span>
+                <span class="kind">editorial<br>history</span>
             </div>
-            <div class="work-title">The First Duino Elegy</div>
-            <div class="work-author">Rainer Maria Rilke</div>
-            <div class="work-description">A variorum of translators rather than manuscripts — the German first edition of 1923 alongside the choices English-language translators have made at moments of genuine contention. <em>Engel Ordnungen</em>: hierarchies, orders, or Dominions? Each rendering carries a different theology and a different rhythm into English.</div>
+            <div class="work-body">
+                <h2>Sonnet 116 <span style="font-style: italic; font-weight: 400;">(Let me not to the marriage of true mindes)</span></h2>
+                <div class="author">William Shakespeare</div>
+                <p class="description">The 1609 Quarto, misnumbered "119" in print, served as the textual ground for four centuries of editorial intervention. Benson's 1640 octavo, Malone's 1790 critical edition, Booth's 1977 commentary, and Vendler's 1997 reading each made different choices at the same cruxes — the meaning of <em>impediments</em>, the negative concord of "if this be error … no man ever loved," the punctuation of the famous couplet. The variorum traces the print history from Q1609 forward.</p>
+                <span class="open">Open</span>
+            </div>
         </a>
+
+        <a class="work" href="viewer.html?work=fr124">
+            <div class="work-meta">
+                <span class="sigla">F</span>
+                <span class="date">ca. 1859</span>
+                <span class="kind">manuscript<br>history</span>
+            </div>
+            <div class="work-body">
+                <h2>Fr124 <span style="font-style: italic; font-weight: 400;">(Safe in their Alabaster Chambers)</span></h2>
+                <div class="author">Emily Dickinson</div>
+                <p class="description">Dickinson sent the poem out, revised it after Sue's letter of objection, and produced at least four distinct second-stanza variants — <em>Light laughs</em>, <em>Grand go</em>, <em>Springs — shake the Sills</em>, <em>Springs — shake the seals</em> — none of which she ever published. The variorum holds the Fascicle 6 holograph at center and arrays the variants and their archival traces (Sue's letter, the Higginson correspondence, the anonymous <em>Republican</em> printing) as orbital witnesses.</p>
+                <span class="open">Open</span>
+            </div>
+        </a>
+
+        <a class="work" href="viewer.html?work=rilke-elegie-1">
+            <div class="work-meta">
+                <span class="sigla">D</span>
+                <span class="date">1912–1922</span>
+                <span class="kind">translation</span>
+            </div>
+            <div class="work-body">
+                <h2>The First Duino Elegy <span style="font-style: italic; font-weight: 400;">(Erste Elegie)</span></h2>
+                <div class="author">Rainer Maria Rilke</div>
+                <p class="description">The 1923 Insel-Verlag first edition serves as the textual ground; the cruxes are the choices five English translators have made in carrying Rilke's German into another language. Leishman & Spender (1939), Mitchell (1982), Gass (1999), Snow (2000), and Crucefix (2006) disagree, sometimes sharply, about <em>Engel Ordnungen</em>, <em>noch grade ertragen</em>, the <em>gedeutete Welt</em>, and what to do with Rilke's terminal "Bleiben ist nirgends."</p>
+                <span class="open">Open</span>
+            </div>
+        </a>
+
     </section>
 
-    <section class="authoring">
-        <div class="section-label">Authoring</div>
-        <p>The platform is open for new works. To author your own variorum in the same schema as the work above, copy <code>works/_template.json</code>, replace the placeholders with your content, and validate before pushing. The schema is small enough that a competent author can write a new variorum in an afternoon if the underlying scholarship is in hand.</p>
-        <p>The platform is a working prototype, not a finished tool. The first work is seeded; the second and third are open invitations.</p>
+    <section class="contribute">
+        <div class="section-label">Add a work</div>
+        <p>The platform is open-source. To seed a new work, read <a href="schema.md">the schema</a> — five primary entities, one mode-specific anchor on a crux, one optional manuscript image. Copy <a href="works/_template.json"><code>works/_template.json</code></a>, fill it in, validate with <code>python3 validate.py works/&lt;id&gt;.json</code>, and open a pull request against the repository. The engine is content-agnostic; everything textual lives in the JSON.</p>
+        <p>Works in the public domain are the easiest to seed cleanly. Modern translations and critical editions are workable but require careful attention to quotation length under fair use.</p>
     </section>
 
-    <footer>
-        <a href="schema.md">Schema documentation</a>
-        <a href="https://github.com/SamuelVance-Law/variorum">Source on GitHub</a>
-        <div class="footer-note">A prototype.</div>
+    <footer class="footer">
+        <span>An open scholarly prototype.</span>
+        <span><a href="https://github.com/SamuelVance-Law/variorum">Repository</a> · <a href="https://democracyinmusic.com">Democracy in Music</a></span>
     </footer>
 
 </main>
+
 </body>
 </html>

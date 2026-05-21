@@ -1,6 +1,6 @@
 # Variorum
 
-A platform for digital scholarly variorums — editions that preserve textual variants alongside the reasoning of their editors, with the editorial collective made explicit. The first seeded work is Emily Dickinson's *Safe in their Alabaster Chambers* (Fr124).
+A platform for digital scholarly variorums — editions that preserve textual variants alongside the reasoning of their editors, with the editorial collective made explicit. Four works are seeded, each pressing a different kind of crux: Emily Dickinson's *Safe in their Alabaster Chambers* (Fr124), a manuscript-history variorum of a short lyric; Shakespeare's *Sonnet 116*, an editorial-history variorum tracing Q1609 against four centuries of print editions; the First Duino Elegy of Rainer Maria Rilke, a translation variorum of the German original against five English renderings; and Sappho 31, a reconstruction-and-translation variorum carrying Catullus's Latin imitation alongside five English translations and preserving the loci desperati of the corrupt Greek transmission.
 
 ## What's in this directory
 
@@ -12,16 +12,22 @@ variorum/
   validate.py              # pre-deploy validator for work files
   README.md                # this file
   works/
-    fr124.json             # Dickinson · the first work
-    fr124-fascicle-6.jpg   # manuscript image for the Dickinson work
     _template.json         # skeleton for new works
+    fr124.json             # Dickinson · manuscript-history variorum
+    fr124/                 # per-work assets, in a folder named by work-id
+      fascicle-6.jpg       #   manuscript image for fr124
+    sonnet-116.json        # Shakespeare · editorial-history variorum
+    sonnet-116/            #
+      q1609.jpg            #   Q1609 facsimile for sonnet-116
+    rilke-elegie-1.json    # Rilke · translation variorum
+    sappho-31.json         # Sappho · reconstruction + translation variorum
   .github/workflows/
     validate.yml           # CI — runs the validator on every push
 ```
 
-Two folders matter going forward: `works/` (which holds both the JSON files and any per-work asset images, named with the work-id as a prefix) and `.github/workflows/` (where GitHub requires its actions to live). Everything else sits at root.
+Two folders matter going forward: `works/` (which holds both the JSON files and per-work asset directories named by work-id) and `.github/workflows/` (where GitHub requires its actions to live). Everything else sits at root.
 
-The landing page (`index.html`) is the public front door — it lists available works and invites new ones. The viewer (`viewer.html`) is the actual variorum engine; it fetches a work file from `works/<id>.json` at boot, validates schema and referential integrity, then renders. To add a second work, write a second JSON file (and any associated assets in `works/`).
+The landing page (`index.html`) is the public front door — it lists available works and invites new ones. The viewer (`viewer.html`) is the actual variorum engine; it fetches a work file from `works/<id>.json` at boot, validates schema and referential integrity, then renders. To add another work, write a JSON file (and place any associated assets in a `works/<id>/` subdirectory).
 
 ## Run it locally
 
@@ -42,7 +48,7 @@ This is a static site. Push the directory to a GitHub repo, point Cloudflare Pag
 
 1. Read `schema.md` — it's the contract. Five entities, one mode-specific bit (the anchor on a crux), one optional manuscript image.
 2. Copy `works/_template.json` to `works/<your-id>.json` and replace the placeholder content. The template is a valid skeleton; it will already pass the validator.
-3. If you have a manuscript image, place it in `works/` named with the work-id as a prefix (e.g. `works/<your-id>-manuscript.jpg`) and reference it in the work file's `manuscriptRendering.image.src`.
+3. If you have a manuscript image, place it in a `works/<your-id>/` subdirectory and reference it in the work file's `manuscriptRendering.image.src` (e.g. `works/<your-id>/manuscript.jpg`).
 4. Validate before pushing:
    ```bash
    python3 validate.py works/<your-id>.json
@@ -80,7 +86,7 @@ This is a working prototype with a real architecture, not yet a finished product
 
 ## Pointers
 
-- `schema.md` — the data contract; sufficient to author a second work
+- `schema.md` — the data contract; sufficient to author a new work
 - `viewer.html` — the renderer; well-commented section by section
 - `validate.py` — what to run before pushing
 - `index.html` — the landing page; edit to add new works to the listing
