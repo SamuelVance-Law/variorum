@@ -56,17 +56,13 @@ def validate(data):
         if wid in witness_ids:
             errors.append(f'Duplicate witness id: "{wid}"')
         witness_ids.add(wid)
-        # position is optional — if absent, the renderer computes it from
-        # the witness's first crux anchor (via witnessId in a position).
-        # Validation that algorithmic layout can resolve happens below,
-        # after we've collected all crux witnessId references.
-        if "position" in w:
-            if not isinstance(w["position"], dict) or "x" not in w["position"] or "y" not in w["position"]:
-                errors.append(f'witnesses "{wid}".position must be {{x, y}}')
+        if "position" not in w:
+            errors.append(f'witnesses "{wid}" is missing a position {{x, y}}')
+        elif not isinstance(w["position"], dict) or "x" not in w["position"] or "y" not in w["position"]:
+            errors.append(f'witnesses "{wid}".position must be {{x, y}}')
 
     # ---- Crux IDs and positions ----
     crux_ids = set()
-    crux_referenced_witnesses = set()  # witnesses referenced via position.witnessId
     for i, c in enumerate(data["cruxes"]):
         cid = c.get("id")
         if not cid:
@@ -96,32 +92,17 @@ def validate(data):
             position_ids.add(pid)
             if p.get("foregrounded"):
                 foregrounded_count += 1
-            if "witnessId" in p:
-                if p["witnessId"] not in witness_ids:
-                    errors.append(
-                        f'cruxes "{cid}".positions[{pi}].witnessId "{p["witnessId"]}" '
-                        f'is not a known witness'
-                    )
-                else:
-                    crux_referenced_witnesses.add(p["witnessId"])
+            if "witnessId" in p and p["witnessId"] not in witness_ids:
+                errors.append(
+                    f'cruxes "{cid}".positions[{pi}].witnessId "{p["witnessId"]}" '
+                    f'is not a known witness'
+                )
         if positions and foregrounded_count == 0:
             errors.append(f'cruxes "{cid}" has no foregrounded position')
         if foregrounded_count > 1:
             errors.append(
                 f'cruxes "{cid}" has {foregrounded_count} foregrounded positions '
                 f'(exactly one expected)'
-            )
-
-    # ---- Witnesses without position must be reachable for algorithmic layout ----
-    for w in data["witnesses"]:
-        wid = w.get("id")
-        if not wid:
-            continue
-        if "position" not in w and wid not in crux_referenced_witnesses:
-            errors.append(
-                f'witnesses "{wid}" has no position and is not referenced by any '
-                f'crux position.witnessId — algorithmic layout has nothing to anchor to. '
-                f'Either add a position {{x, y}} or link the witness to at least one crux.'
             )
 
     # ---- primaryWitnessId ----
