@@ -11,7 +11,7 @@
   "primaryWitnessId": "primary-witness",
   "manuscriptRendering": {
     "image": {
-      "src": "works/REPLACE_ME-manuscript-image.jpg",
+      "src": "works/REPLACE_ME/manuscript-image.jpg",
       "alt": "Description of the manuscript page for accessibility",
       "credit": "Courtesy [Archive Name]. Image used under [license]."
     },
