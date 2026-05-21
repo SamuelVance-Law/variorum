@@ -1,0 +1,566 @@
+{
+  "schemaVersion": "1.0",
+  "id": "sappho-31",
+  "work": {
+    "title": "Sappho 31",
+    "shortTitle": "φαίνεταί μοι",
+    "author": "Sappho",
+    "kind": "lyric fragment",
+    "datePeriod": "ca. 600 BCE",
+    "subtitle": "Variorum"
+  },
+
+  "primaryWitnessId": "voigt-1971",
+
+  "manuscriptRendering": {
+    "lines": [
+      { "text": "φαίνεταί μοι κῆνος ἴσος θέοισιν" },
+      { "text": "ἔμμεν' ὤνηρ, ὄττις ἐνάντιός τοι" },
+      { "text": "ἰσδάνει καὶ πλάσιον ἆδυ φωνεί-" },
+      { "text": "σας ὐπακούει", "indent": true },
+
+      { "text": "καὶ γελαίσας ἰμέροεν, τό μ' ἦ μὰν", "gap": true },
+      { "text": "καρδίαν ἐν στήθεσιν ἐπτόαισεν·" },
+      { "text": "ὠς γὰρ ἔς σ' ἴδω βρόχε', ὤς με φώναι-" },
+      { "text": "σ' οὐδ' ἒν ἔτ' εἴκει,", "indent": true },
+
+      { "text": "ἀλλά κὰμ μὲν γλῶσσα ἔαγε, λέπτον", "gap": true },
+      { "text": "δ' αὔτικα χρῷ πῦρ ὐπαδεδρόμηκεν," },
+      { "text": "ὀππάτεσσι δ' οὐδ' ἒν ὄρημμ', ἐπιρρόμ-" },
+      { "text": "βεισι δ' ἄκουαι,", "indent": true },
+
+      { "text": "†έκαδε μ'† ἴδρως κακχέεται, τρόμος δὲ", "gap": true },
+      { "text": "παῖσαν ἄγρει, χλωροτέρα δὲ ποίας" },
+      { "text": "ἔμμι, τεθνάκην δ' ὀλίγω 'πιδεύης" },
+      { "text": "φαίνομ' ἔμ' αὔτᾳ.", "indent": true },
+
+      { "text": "ἀλλὰ πὰν τόλματον, ἐπεὶ †καὶ πένητα†", "gap": true }
+    ],
+    "caption": [
+      { "text": "Sappho et Alcaeus" },
+      { "text": "Eva-Maria Voigt, ed.", "mono": true },
+      { "text": "Amsterdam · Athenaeum-Polak & Van Gennep" },
+      { "text": "1971" },
+      { "text": "[transmitted via Longinus, On the Sublime 10.1–3]", "mono": true }
+    ]
+  },
+
+  "readingCopy": {
+    "position": { "x": 220, "y": 0 },
+    "stanzas": [
+      {
+        "id": "s1",
+        "lines": [
+          "He seems to me {crux:equal-to-gods}, that man,",
+          "whoever sits across from you",
+          "and listens close-by to your",
+          "   {crux:sweet-voicing}"
+        ]
+      },
+      {
+        "id": "s2",
+        "lines": [
+          "and {crux:lovely-laughing} — which sets",
+          "the heart in my chest aflutter.",
+          "For when I look at you {crux:briefly}, then",
+          "   I lose the power of speech;"
+        ]
+      },
+      {
+        "id": "s3",
+        "lines": [
+          "my tongue {crux:tongue-broken}; at once",
+          "a delicate fire runs beneath my skin;",
+          "with my eyes I see nothing; in my ears",
+          "   a roaring;"
+        ]
+      },
+      {
+        "id": "s4",
+        "lines": [
+          "{crux:sweat-pours}, and trembling",
+          "takes me whole; {crux:chloros} grass",
+          "I am, and to dying I lack",
+          "   but little, it seems to me."
+        ]
+      },
+      {
+        "id": "s5",
+        "lines": [
+          "But all must be dared, since †even a poor man†…"
+        ]
+      }
+    ]
+  },
+
+  "witnesses": [
+    {
+      "id": "voigt-1971",
+      "type": "manuscript",
+      "sigla": "S",
+      "title": "Sappho 31",
+      "subtitle": "Eva-Maria Voigt, ed., Sappho et Alcaeus",
+      "kind": "critical edition",
+      "date": "1971",
+      "aboutPhrase": "Voigt's 1971 critical edition — the standard text",
+      "position": { "x": -460, "y": 0 },
+      "apparatus": {
+        "context": "The text Sappho composed has been lost for some two and a half millennia. What survives is a single ancient quotation: Longinus, in his treatise On the Sublime (1st c. CE, possibly later), preserves the poem as an exemplum of sublime emotional intensity — a poet describing the symptoms of erotic ruin with such precision that the reader feels them. Longinus's text in turn survives through a single medieval manuscript family (the Codex Parisinus Graecus 2036 and its descendants). Every modern reading of Sappho 31 is therefore mediated by a 10th-century Byzantine scribe copying a 1st-century rhetorician quoting a 6th-century BCE poet. Voigt's 1971 edition is the standard critical text on which all serious modern translations rest. It marks two loci desperati — both rendered here with daggers — where the manuscript transmission is corrupt and the meaning has to be reconstructed. The poem also breaks off mid-line. We do not know how it ended.",
+        "endorsements": [
+          {
+            "endorser": "M. L. West · Oxford",
+            "date": "1990",
+            "reasoning": "Voigt's edition is the closest thing the discipline has to a settled Greek text of Sappho. Where it marks corruption with daggers, no translator should pretend otherwise; the apparent fluency of any English version that smooths those passages is purchased at the cost of truthfulness about what we have."
+          },
+          {
+            "endorser": "P. Kallias · Athens",
+            "date": "Mar 2026",
+            "reasoning": "The poem is in some sense unfinishable. The transmission is not a thin veil over a recoverable original; it is the only access. The variorum form is uniquely suited to this work because it refuses to pretend the gaps aren't there."
+          }
+        ]
+      }
+    },
+    {
+      "id": "catullus-51",
+      "type": "translation",
+      "sigla": "C",
+      "title": "Carmen 51",
+      "subtitle": "Gaius Valerius Catullus",
+      "kind": "Latin imitation",
+      "date": "ca. 55 BCE",
+      "aboutPhrase": "Catullus's Latin imitation, ca. 55 BCE",
+      "position": { "x": -580, "y": -660 },
+      "body": "Ille mi par esse deo videtur,\nille, si fas est, superare divos,\nqui sedens adversus identidem te\n   spectat et audit\n\ndulce ridentem, misero quod omnis\neripit sensus mihi: nam simul te,\nLesbia, aspexi, nihil est super mi\n   <vocis in ore>;\n\nlingua sed torpet, tenuis sub artus\nflamma demanat, sonitu suopte\ntintinant aures, gemina teguntur\n   lumina nocte.\n\notium, Catulle, tibi molestum est:\notio exsultas nimiumque gestis:\notium et reges prius et beatas\n   perdidit urbes.",
+      "multiline": true,
+      "apparatus": {
+        "context": "The most consequential ancient response to Sappho 31. Catullus, writing in Rome roughly five and a half centuries after Sappho, renders the first three Sapphic stanzas into Latin so closely that they double as a textual witness — where Catullus departs from a phrase, scholars have read the departure as evidence about Sappho's text. But Carmen 51 also performs a famous editorial intervention. Where Sappho's poem disintegrates into the corrupt fourth stanza and breaks off, Catullus replaces what follows with a single stanza of self-address: otium, Catulle, tibi molestum est — \"leisure, Catullus, is harmful to you.\" Whether this fourth stanza reflects something in Sappho's lost ending or is entirely Catullus's own moralising addition is one of the longest-running disputes in classical philology. The variorum cannot resolve the question; it can only place the two stanzas next to each other and let the reader sit with the gap.",
+        "endorsements": [
+          {
+            "endorser": "G. Wills · Cambridge",
+            "date": "Feb 2026",
+            "reasoning": "Catullus's first three stanzas are the closest thing we have to a parallel witness for Sappho 31. The Latin tracks the Greek phrase by phrase, often word by word — \"par esse deo\" for \"ἴσος θέοισιν,\" \"dulce ridentem\" for \"γελαίσας ἰμέροεν.\" Where he diverges (\"misero\" inserted into stanza 2 with no Greek counterpart), he diverges deliberately. The otium stanza is the harder problem."
+          },
+          {
+            "endorser": "L. Tatum · Wake Forest",
+            "date": "2018",
+            "reasoning": "The otium stanza is best read as Catullus's own contribution rather than a translation of lost Sappho. The Roman moralising voice — leisure as civic danger, the fall of kingdoms — is foreign to the Sapphic register and idiomatically Roman. The variorum should present it as Catullus's editorial choice, not as evidence for what Sappho wrote."
+          }
+        ]
+      }
+    },
+    {
+      "id": "wharton-1885",
+      "type": "translation",
+      "sigla": "W",
+      "title": "Sappho: Memoir, Text, Selected Renderings",
+      "subtitle": "Henry Thornton Wharton",
+      "kind": "prose translation",
+      "date": "1885",
+      "aboutPhrase": "Wharton's 1885 Victorian prose translation",
+      "position": { "x": -1140, "y": 220 },
+      "apparatus": {
+        "context": "Wharton's 1885 volume was the first English book devoted entirely to Sappho — a Victorian act of editorial recovery that printed the Greek alongside a prose English crib and a survey of earlier translators. Its translations read as pre-modernist: Latinate, lightly ornamented, careful to soften what the Victorians took to be Sappho's frankness. The book made Sappho available to readers without Greek for the first time in English, and shaped the late nineteenth century's image of her as a melancholic genius. Wharton's choices are conservative and now sound dated, but as a baseline against which later translations argue, the volume remains foundational. It is also fully in the public domain — the only one of the English translations in this variorum without copyright constraints on its reproduction.",
+        "endorsements": [
+          {
+            "endorser": "C. Reed · Princeton",
+            "date": "Jan 2026",
+            "reasoning": "Wharton is unfairly neglected. His prose readings have the virtue of refusing to be poetry — they don't reach for effects the Greek isn't reaching for, and they preserve the strangeness of the verb-tense sequence that more accomplished translators smooth out. The Victorian register is a cost, but the literal fidelity is real."
+          }
+        ]
+      }
+    },
+    {
+      "id": "barnard-1958",
+      "type": "translation",
+      "sigla": "B",
+      "title": "Sappho: A New Translation",
+      "subtitle": "Mary Barnard, trans.",
+      "kind": "translation",
+      "date": "1958",
+      "aboutPhrase": "Barnard's 1958 University of California Press translation",
+      "position": { "x": 640, "y": -680 },
+      "apparatus": {
+        "context": "Mary Barnard's 1958 Sappho was the translation that brought Sappho into mid-century American verse. Where the Victorians had given Sappho marble and lyre, Barnard gave her the breath-line — short, unornamented, almost imagist. She rendered the fragments as if they had always been written for an Olson or a Niedecker. Her introduction (by Dudley Fitts) framed the project as a recovery of Sappho from Victorian decoration; the translations themselves do that work in their pacing. The cost is occasional flatness; the gain is a Sappho who reads as a contemporary poet making decisions about syllables. Barnard's reading of χλωροτέρα as 'paler' rather than 'greener' is the most frequently cited choice in any modern Sappho translation and the foreground of one of the central cruxes in this variorum.",
+        "endorsements": [
+          {
+            "endorser": "A. Stein · Iowa Writers' Workshop",
+            "date": "Feb 2026",
+            "reasoning": "Barnard's spareness is itself an argument about Sappho. The Greek lyric tradition is not, after all, an ornamental tradition — the surviving fragments are mostly terse. Reading Sappho through Barnard recovers something the more elaborate translations bury."
+          }
+        ]
+      }
+    },
+    {
+      "id": "carson-2002",
+      "type": "translation",
+      "sigla": "K",
+      "title": "If Not, Winter: Fragments of Sappho",
+      "subtitle": "Anne Carson, trans.",
+      "kind": "translation",
+      "date": "2002",
+      "aboutPhrase": "Carson's 2002 Knopf bilingual edition",
+      "position": { "x": 700, "y": 140 },
+      "apparatus": {
+        "context": "Carson's bilingual edition is the most consequential translation of Sappho in two generations. Its formal innovation is the visible bracket: where the papyri or the manuscript transmission are damaged, Carson prints the brackets themselves on the page. The damage becomes part of what the reader reads. For Sappho 31, where the text is mostly preserved but pocked with corruptions, the brackets are sparing — but their presence elsewhere in the volume trains the reader to see lacunae as constitutive rather than incidental. Carson translates in a precise, almost paratactic register, declining the kind of grammatical smoothing that older translations performed. Her χλωροτέρα is \"greener,\" restoring the chromatic literal meaning that Barnard had displaced. Whether this is rightness or merely the swing of fashion is itself a productive question.",
+        "endorsements": [
+          {
+            "endorser": "D. Mendelsohn · Bard",
+            "date": "2003",
+            "reasoning": "Carson's brackets are not affectation. They are the most honest typographical solution any English Sappho has found to the central problem that Sappho's text is not fully there. To translate her without the brackets is to forge a poem; to translate her with them is to publish an apparatus."
+          },
+          {
+            "endorser": "E. Vandiver · Whitman College",
+            "date": "Feb 2026",
+            "reasoning": "Carson's restoration of 'greener' for χλωροτέρα is a return to the literal Greek that has been the dominant scholarly reading since at least Page. Barnard's 'paler' was an interpretive flourish; Carson refuses it. The cost is that 'greener than grass' is, for English readers, mildly strange. The gain is fidelity to what the word means."
+          }
+        ]
+      }
+    },
+    {
+      "id": "poochigian-2009",
+      "type": "translation",
+      "sigla": "P",
+      "title": "Stung with Love: Poems and Fragments",
+      "subtitle": "Aaron Poochigian, trans.",
+      "kind": "verse translation",
+      "date": "2009",
+      "aboutPhrase": "Poochigian's 2009 Penguin Classics metrical translation",
+      "position": { "x": -200, "y": 760 },
+      "apparatus": {
+        "context": "Poochigian's translation is the only contemporary English Sappho that attempts to render the Sapphic stanza in English meter — three long lines plus a short adonic, scanned. The wager is that the meter itself is part of what the poems are and that an English version that abandons it loses something the prose-poem and free-verse translations cannot recover. The cost is occasional strain at the level of word choice, where the meter forces a syllable count that distorts emphasis. The volume is in the Penguin Classics line, paired with introductions by Carl Lindahl; its audience is teaching-oriented as much as literary. Whether the meter justifies its costs is one of the ongoing questions any reader of this variorum will need to answer for themselves.",
+        "endorsements": [
+          {
+            "endorser": "R. Calame · Lausanne",
+            "date": "Apr 2026",
+            "reasoning": "Poochigian is alone among contemporary English translators in taking the Sapphic stanza seriously as a constraint. The other translators all start by deciding that the meter cannot be reproduced. Poochigian decides that not reproducing it is itself a translation choice with consequences. Both decisions are defensible; only one shows its work in the verse."
+          }
+        ]
+      }
+    },
+    {
+      "id": "rayor-2014",
+      "type": "translation",
+      "sigla": "R",
+      "title": "Sappho: A New Translation of the Complete Works",
+      "subtitle": "Diane J. Rayor, trans.",
+      "kind": "translation",
+      "date": "2014",
+      "aboutPhrase": "Rayor's 2014 Cambridge edition, the current scholarly standard",
+      "position": { "x": 700, "y": 640 },
+      "apparatus": {
+        "context": "Rayor's 2014 translation supersedes most earlier scholarly Sapphos. It incorporates the Greek text revisions that followed the 2004 Cologne papyrus discoveries — additions to the Sapphic corpus that did not affect 31 directly but reset the field's confidence in the textual ground. Rayor's introduction is unusually frank about what the translations can and cannot do; the volume is paired with an extensive commentary by André Lardinois on the historical and performance context of the poems. The translation itself reads as careful rather than ornamental: somewhere between Barnard's spareness and Carson's slight strangeness, with a high premium on accuracy and a low premium on poetic effect. It is the volume now most often assigned in undergraduate classical literature courses.",
+        "endorsements": [
+          {
+            "endorser": "N. Krevans · Minnesota",
+            "date": "2015",
+            "reasoning": "Rayor's translation is the one the discipline now uses by default. That makes it the right anchor for a variorum: not the most adventurous English Sappho but the one against which the others' departures show most clearly."
+          }
+        ]
+      }
+    }
+  ],
+
+  "cruxes": [
+    {
+      "id": "equal-to-gods",
+      "label": "Stanza 1, line 1 — ἴσος θέοισιν",
+      "location": "inline",
+      "anchor": { "stanzaId": "s1", "lineIdx": 0, "originalWord": "equal" },
+      "positions": [
+        {
+          "id": "equal-to-gods-literal",
+          "label": "equal to the gods",
+          "witnessId": "rayor-2014",
+          "foregrounded": true,
+          "endorsements": [
+            {
+              "endorser": "D. Rayor · 2014",
+              "reasoning": "The Greek phrase ἴσος θέοισιν is a formulaic Homeric register — the comparative grammar is plural (\"to gods\") rather than singular (\"to a god\"), and the formula carries the weight of the heroic tradition Sappho is working against. Rendering it as \"equal to the gods\" preserves the formulaic feel."
+            },
+            {
+              "endorser": "I. Brouwer · Leiden",
+              "date": "Feb 2026",
+              "reasoning": "Rayor is right to keep the plural. The man's fortune is being measured against the divine in general — against the condition of divinity — not against any single deity. The plural matters for the theology of the poem."
+            }
+          ]
+        },
+        {
+          "id": "godlike",
+          "label": "godlike",
+          "witnessId": "barnard-1958",
+          "endorsements": [
+            {
+              "endorser": "M. Barnard · 1958",
+              "reasoning": "Barnard compresses the Homeric formula to a single English adjective. The gain is breath; the cost is the loss of the plural register and the explicit comparison. \"Godlike\" reads as a quality of the man rather than as a measure being applied to him from outside."
+            }
+          ]
+        },
+        {
+          "id": "peer-of-gods",
+          "label": "a peer of the gods",
+          "witnessId": "wharton-1885",
+          "endorsements": [
+            {
+              "endorser": "H. T. Wharton · 1885",
+              "reasoning": "Wharton's prose reads \"a peer of the gods,\" a phrasing now archaic but precise — \"peer\" carries the Latin par (Catullus's word, \"par esse deo\") and registers the comparison as a status claim. The Victorian register is the cost; the etymological precision is the gain."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sweet-voicing",
+      "label": "Stanza 1, line 3 — ἆδυ φωνείσας",
+      "location": "inline",
+      "anchor": { "stanzaId": "s1", "lineIdx": 3, "originalWord": "sweet-voicing" },
+      "positions": [
+        {
+          "id": "sweet-voicing-literal",
+          "label": "sweet-voicing",
+          "witnessId": "carson-2002",
+          "foregrounded": true,
+          "endorsements": [
+            {
+              "endorser": "A. Carson · 2002",
+              "reasoning": "Carson's \"sweet-voicing\" preserves the participial form of the Greek — ἆδυ φωνείσας is an adverb modifying a present participle. The hyphenated English captures the strangeness of the construction; it is the voice in the act of being sweet."
+            },
+            {
+              "endorser": "F. Budelmann · Oxford",
+              "date": "Mar 2026",
+              "reasoning": "Carson's compound is the right English. The Greek's φωνείσας is in the act, not in the result, and the present-participle pressure matters: the man is listening to a voice in mid-utterance, not to speech that has finished. The hyphen does what English grammar cannot do alone."
+            }
+          ]
+        },
+        {
+          "id": "sweet-talking",
+          "label": "sweet talking",
+          "witnessId": "barnard-1958",
+          "endorsements": [
+            {
+              "endorser": "M. Barnard · 1958",
+              "reasoning": "Barnard's idiomatic English — \"sweet talking\" — registers the voicing as ongoing without the strain of the hyphenated participle. The price is some loss of the etymological precision; \"talking\" is a homelier verb than φωνέω."
+            }
+          ]
+        },
+        {
+          "id": "honey-voiced",
+          "label": "honey voice",
+          "witnessId": "poochigian-2009",
+          "endorsements": [
+            {
+              "endorser": "A. Poochigian · 2009",
+              "reasoning": "Poochigian's metrical line requires a different solution: ἆδυ becomes \"honey,\" a noun-as-adjective that takes the stress more cleanly than \"sweet.\" The reading is licensed by ἁδύς's broader semantic range (it covers honeyed speech in Homer as well as in Sappho), and it gives the meter room to breathe."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lovely-laughing",
+      "label": "Stanza 2, line 1 — γελαίσας ἰμέροεν",
+      "location": "inline",
+      "anchor": { "stanzaId": "s2", "lineIdx": 0, "originalWord": "lovely-laughing" },
+      "positions": [
+        {
+          "id": "lovely-laughing-literal",
+          "label": "lovely laughing",
+          "witnessId": "carson-2002",
+          "foregrounded": true,
+          "endorsements": [
+            {
+              "endorser": "A. Carson · 2002",
+              "reasoning": "ἰμέροεν is an adverb formed from ἵμερος, desire — the laugh is desire-causing, not merely pleasant. \"Lovely\" is the soft English option; Carson's choice gestures at the laugh's effect without overdetermining it as erotic."
+            }
+          ]
+        },
+        {
+          "id": "alluring-laughter",
+          "label": "alluring laughter",
+          "witnessId": "rayor-2014",
+          "endorsements": [
+            {
+              "endorser": "D. Rayor · 2014",
+              "reasoning": "Rayor's \"alluring\" restores the erotic charge that \"lovely\" softens. ἰμέροεν is the adjective form of the noun for sexual longing; the laughter is not just pleasing but desire-inducing. The translation should not be more decorous than the Greek."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "briefly",
+      "label": "Stanza 2, line 3 — βρόχε'",
+      "location": "inline",
+      "anchor": { "stanzaId": "s2", "lineIdx": 2, "originalWord": "briefly" },
+      "positions": [
+        {
+          "id": "briefly-literal",
+          "label": "even briefly",
+          "witnessId": "carson-2002",
+          "foregrounded": true,
+          "endorsements": [
+            {
+              "endorser": "A. Carson · 2002",
+              "reasoning": "βρόχε' is the elided form of βροχέως, \"briefly\" or \"for a short time.\" The crux is whether to render it as duration (briefly) or as quality (even a glance). Carson chooses duration; the symptom is triggered by a moment of looking, not by sustained attention."
+            }
+          ]
+        },
+        {
+          "id": "even-a-glance",
+          "label": "for so much as a glance",
+          "witnessId": "poochigian-2009",
+          "endorsements": [
+            {
+              "endorser": "A. Poochigian · 2009",
+              "reasoning": "Poochigian renders βρόχε' as a quality of the act rather than a duration of it: not \"briefly\" but \"so much as a glance,\" emphasising the minimal threshold. The shift is licensed by the Greek's ambiguity — βροχέως can mean either — and it reads better in English meter."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tongue-broken",
+      "label": "Stanza 3, line 1 — γλῶσσα ἔαγε",
+      "location": "inline",
+      "anchor": { "stanzaId": "s3", "lineIdx": 0, "originalWord": "tongue-broken" },
+      "positions": [
+        {
+          "id": "tongue-broken-literal",
+          "label": "is broken",
+          "witnessId": "carson-2002",
+          "foregrounded": true,
+          "endorsements": [
+            {
+              "endorser": "A. Carson · 2002",
+              "reasoning": "ἔαγε is the perfect of ἄγνυμι, \"to break\" — literally, the tongue stands broken. Carson preserves the violent literal verb. The metaphor is alarming in Greek and should be alarming in English; smoothing it loses the symptom."
+            }
+          ]
+        },
+        {
+          "id": "tongue-silent",
+          "label": "is silent",
+          "witnessId": "wharton-1885",
+          "endorsements": [
+            {
+              "endorser": "H. T. Wharton · 1885",
+              "reasoning": "Wharton's Victorian prose softens ἔαγε to \"is silent.\" The decision is partly decorous (broken tongues are not Victorian), partly hermeneutic — the symptom Sappho is describing is the failure of speech, and silence captures the experience even if it loses the verb's etymology."
+            }
+          ]
+        },
+        {
+          "id": "tongue-snaps",
+          "label": "snaps",
+          "witnessId": "rayor-2014",
+          "endorsements": [
+            {
+              "endorser": "D. Rayor · 2014",
+              "reasoning": "Rayor's \"snaps\" preserves the violence of the perfect-tense ἔαγε without the slightly comical English of \"is broken.\" The verb registers the sudden onset that the Greek perfect captures: not a process of breaking but a state arrived at instantaneously."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sweat-pours",
+      "label": "Stanza 4, line 1 — †έκαδε μ'† ἴδρως κακχέεται",
+      "location": "inline",
+      "anchor": { "stanzaId": "s4", "lineIdx": 0, "originalWord": "sweat-pours" },
+      "positions": [
+        {
+          "id": "cold-sweat",
+          "label": "a cold sweat covers me",
+          "witnessId": "carson-2002",
+          "foregrounded": true,
+          "endorsements": [
+            {
+              "endorser": "A. Carson · 2002",
+              "reasoning": "The Greek opening of the stanza is corrupt: †έκαδε μ'† marks a locus desperatus that the manuscript transmission has failed to preserve. Carson, like most modern translators, follows the Wilamowitz reconstruction (ἀ δέ μ' ἴδρως ψῦχρος ἔχει — \"and cold sweat takes me\") and renders it accordingly. The English reader should know that the phrase rests on editorial guess."
+            },
+            {
+              "endorser": "L. Prauscello · Trinity Cambridge",
+              "date": "Feb 2026",
+              "reasoning": "The Wilamowitz reconstruction is the most economical of the proposals — it requires the fewest manuscript emendations and fits the sapphic meter cleanly. Cold sweat as a symptom also matches the catalogue of physiological reactions Sappho is enumerating. The reconstruction is conjecture, but well-grounded conjecture."
+            }
+          ]
+        },
+        {
+          "id": "sweat-pours-down",
+          "label": "sweat pours down me",
+          "witnessId": "rayor-2014",
+          "endorsements": [
+            {
+              "endorser": "D. Rayor · 2014",
+              "reasoning": "Rayor drops the editorial reconstruction of the corrupt phrase and renders only what the surviving Greek (ἴδρως κακχέεται) clearly says: sweat pours down. The decision is conservative in the right direction — when the manuscript is broken, the translation should not invent details (cold, chill) that the Greek does not deliver."
+            }
+          ]
+        },
+        {
+          "id": "clammy-sweat",
+          "label": "a clammy sweat is on me",
+          "witnessId": "wharton-1885",
+          "endorsements": [
+            {
+              "endorser": "H. T. Wharton · 1885",
+              "reasoning": "Wharton's \"clammy sweat\" reaches for a different reconstruction of the corrupt opening (some 19th-century editors read †έκαδε μ'† as containing a word for chill or damp). The Victorian English now sounds dated, but the editorial reasoning behind it represents a tradition older than the Wilamowitz consensus."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chloros",
+      "label": "Stanza 4, line 2 — χλωροτέρα δὲ ποίας",
+      "location": "inline",
+      "anchor": { "stanzaId": "s4", "lineIdx": 1, "originalWord": "chloros" },
+      "positions": [
+        {
+          "id": "greener",
+          "label": "greener than",
+          "witnessId": "carson-2002",
+          "foregrounded": true,
+          "endorsements": [
+            {
+              "endorser": "A. Carson · 2002",
+              "reasoning": "χλωρός in archaic Greek covers a chromatic range that includes yellow-green, fresh green, and the pallor of fear or illness. The literal sense is chromatic (\"green\"); the affective sense (\"pale\") is a metaphorical extension. Carson restores the literal: the speaker is greener than the grass she is comparing herself to. The strangeness in English is the cost of fidelity."
+            },
+            {
+              "endorser": "M. Henrichs · Harvard",
+              "date": "1994",
+              "reasoning": "The literal chromatic sense is the right one. Sappho is not saying that she is pale-faced like grass; she is saying she is green like grass — the comparandum is the colour of vegetation, and the strangeness is the point. The poet is reaching for a comparison so exact that it doesn't quite work in English, and we should not relieve her of that strain."
+            }
+          ]
+        },
+        {
+          "id": "paler",
+          "label": "paler than",
+          "witnessId": "barnard-1958",
+          "endorsements": [
+            {
+              "endorser": "M. Barnard · 1958",
+              "reasoning": "Barnard's \"paler than grass\" reads χλωρός as an affective term — chloros pallor in medical Greek refers to the bloodless complexion of fear and illness, and Sappho's catalogue of symptoms (trembling, near-death) is medical in register. Barnard chooses the affective sense; the English reader feels what the speaker feels."
+            },
+            {
+              "endorser": "C. Calame · Lausanne",
+              "date": "1987",
+              "reasoning": "Barnard's reading has scholarly support. The χλωρὸν δέος of Homer (the \"green fear\" or \"pale fear\" that comes over warriors) is the closest archaic parallel, and the consensus there has long been that the colour-word is being used affectively, not chromatically. The same logic applies here."
+            }
+          ]
+        },
+        {
+          "id": "more-sallow",
+          "label": "more sallow than",
+          "witnessId": "wharton-1885",
+          "endorsements": [
+            {
+              "endorser": "H. T. Wharton · 1885",
+              "reasoning": "Wharton's \"more sallow than the grass\" is the Victorian compromise — neither chromatic green nor affective pale, but a third register that captures the unhealthy yellow-green tint of skin under emotional duress. Some readers consider this the most precise English for χλωρός in this passage."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "connections": [
+    { "from": "voigt-1971", "to": "catullus-51" }
+  ]
+}

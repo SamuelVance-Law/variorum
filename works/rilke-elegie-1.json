@@ -267,7 +267,8 @@
       "subtitle": "J. B. Leishman & Stephen Spender, trans.",
       "kind": "translation",
       "date": "1939",
-      "aboutPhrase": "the Leishman & Spender 1939 Hogarth Press edition"
+      "aboutPhrase": "the Leishman & Spender 1939 Hogarth Press edition",
+      "position": { "x": -1080, "y": 0 }
     },
     {
       "id": "mitchell-1982",
@@ -277,7 +278,8 @@
       "subtitle": "Stephen Mitchell, trans.",
       "kind": "translation",
       "date": "1982",
-      "aboutPhrase": "Mitchell's widely-read 1982 Random House translation"
+      "aboutPhrase": "Mitchell's widely-read 1982 Random House translation",
+      "position": { "x": 640, "y": -700 }
     },
     {
       "id": "gass-1999",
@@ -287,7 +289,8 @@
       "subtitle": "William H. Gass",
       "kind": "translation & commentary",
       "date": "1999",
-      "aboutPhrase": "Gass's 1999 Knopf translation-and-commentary"
+      "aboutPhrase": "Gass's 1999 Knopf translation-and-commentary",
+      "position": { "x": -280, "y": -720 }
     },
     {
       "id": "snow-2000",
@@ -297,7 +300,8 @@
       "subtitle": "Edward Snow, trans.",
       "kind": "translation",
       "date": "2000",
-      "aboutPhrase": "Snow's 2000 Farrar Straus bilingual edition"
+      "aboutPhrase": "Snow's 2000 Farrar Straus bilingual edition",
+      "position": { "x": 700, "y": 160 }
     },
     {
       "id": "crucefix-2006",
@@ -307,7 +311,8 @@
       "subtitle": "Martyn Crucefix, trans.",
       "kind": "translation",
       "date": "2006",
-      "aboutPhrase": "Crucefix's 2006 Enitharmon translation"
+      "aboutPhrase": "Crucefix's 2006 Enitharmon translation",
+      "position": { "x": 580, "y": 680 }
     }
   ],
 
