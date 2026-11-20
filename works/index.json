@@ -1,0 +1,24 @@
+{
+  "works": [
+    {
+      "id": "fr124",
+      "kind": "manuscript history",
+      "blurb": "Dickinson sent the poem out, revised it after Sue's letter of objection, and left at least four distinct second stanzas, none of which she published. The apparatus sets her revised fair copy beside the earlier fascicle, the letters, and the anonymous newspaper printing."
+    },
+    {
+      "id": "sonnet-116",
+      "kind": "editorial history",
+      "blurb": "The 1609 Quarto, which misnumbers the sonnet 119, is the only early authority. Four centuries of editors have repointed it. One crux is seeded — whether line 2 ends a sentence — and the rest is open."
+    },
+    {
+      "id": "rilke-elegie-1",
+      "kind": "translation",
+      "blurb": "The German of the 1923 first edition is fixed; what is contested is how to carry it into English. Five translators disagree about der Engel Ordnungen, noch grade ertragen, the gedeutete Welt, and Bleiben ist nirgends."
+    },
+    {
+      "id": "sappho-31",
+      "kind": "reconstruction and translation",
+      "blurb": "The Greek survives only because an ancient critic quoted it, and the quotation is corrupt in two places and breaks off. Catullus's Latin imitation stands beside five English translators' choices."
+    }
+  ]
+}

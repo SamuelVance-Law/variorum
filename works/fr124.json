@@ -1,48 +1,156 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "2.0",
   "id": "fr124",
   "work": {
     "title": "Safe in their Alabaster Chambers",
     "shortTitle": "Fr124",
     "author": "Emily Dickinson",
     "kind": "poem",
-    "datePeriod": "ca. 1859–1862",
-    "subtitle": "Variorum"
+    "date": "ca. 1859–1862",
+    "language": "en"
   },
-  "primaryWitnessId": "fascicle-6",
-  "manuscriptRendering": {
-    "image": {
-      "src": "works/fr124/fascicle-6.jpg",
-      "alt": "Manuscript page of \"Safe in their Alabaster Chambers\" (Fr124) bound into Fascicle 6, ca. 1859. Houghton Library MS Am 1118.3, h11b–c.",
-      "credit": "Courtesy Houghton Library, Harvard University. Image used under CC BY-NC-ND 3.0."
+  "edition": {
+    "editor": "Sam Vance-Law",
+    "status": "draft",
+    "updated": "2026-11-20",
+    "note": "Seed apparatus. It was machine-drafted and has not yet been checked against the sources: every attribution of a reading to a witness is marked unverified until someone has the book or manuscript in hand. Voices marked illustrative are invented, to show how the form works; they are not real scholars."
+  },
+  "witnesses": [
+    {
+      "id": "ms-1861",
+      "siglum": "A",
+      "kind": "manuscript",
+      "title": "Fair copy with “Grand go the Years”",
+      "creator": "Emily Dickinson",
+      "date": "ca. 1861",
+      "context": "A fair copy in Dickinson's hand of the revised poem: the first stanza with “Lie”, the “Grand go the Years” stanza and, below a ruled line, the opening of the alternative “Springs — shake the Sills”. The seed file reproduced this page under the name of Fascicle 6, the 1859 copy; it is not that copy, since it does not carry “Light laughs the breeze”. It is probably the later fascicle copy of 1861, which should be confirmed and cited.",
+      "image": {
+        "src": "works/fr124/ms-1861.jpg",
+        "alt": "Manuscript page in Dickinson's hand: the poem with the stanza beginning “Grand go the Years”, followed below a ruled line by the first three lines of “Springs — shake the Sills”.",
+        "credit": "Courtesy Houghton Library, Harvard University. Image used under CC BY-NC-ND 3.0."
+      }
     },
-    "lines": [
-      { "text": "Safe in their Alabas-" },
-      { "text": "ter Chambers -", "indent": true },
-      { "text": "Untouched by morning" },
-      { "text": "And untouched by noon -", "indent": true },
-      { "text": "Sleep the meek mem-" },
-      { "text": "bers of the Resurrection", "indent": true },
-      { "text": "Rafter of satin,", "indent": true },
-      { "text": "And Roof of stone -", "indent": true },
-      { "text": "Light laughs the breeze", "gap": true },
-      { "text": "In her Castle above them -", "indent": true },
-      { "text": "Babbles the Bee in a stolid ear," },
-      { "text": "Pipe the Sweet Birds in ignorant cadence -" },
-      { "text": "Ah, what sagacity perished here!" }
-    ],
-    "cruxMarks": [
-      { "cruxId": "verb", "top": 178, "left": 62, "title": "Sleep / Lie" }
-    ],
-    "caption": [
-      { "text": "Houghton Library" },
-      { "text": "MS Am 1118.3 · h11b–c", "mono": true },
-      { "text": "Fascicle 6" },
-      { "text": "ca. 1859" }
+    {
+      "id": "fascicle-6",
+      "siglum": "F",
+      "kind": "manuscript",
+      "title": "Fascicle 6",
+      "creator": "Emily Dickinson, fair copy",
+      "date": "ca. 1859",
+      "citation": "Houghton Library, Harvard University, MS Am 1118.3 (h11b–c)",
+      "context": "The earliest extant copy of Fr124, bound by Dickinson herself into Fascicle 6 in late 1859. The page documents her line breaks at \"Alabaster\" and \"members\" (split across lines), her indentation of even-numbered lines, and an in-manuscript variant for the word \"cadence\" (with \"cadences\" noted as alternate). It is the textual ground from which every subsequent version of the poem departs."
+    },
+    {
+      "id": "sue-letter",
+      "siglum": "S",
+      "kind": "letter",
+      "title": "Susan Dickinson to Emily Dickinson",
+      "date": "ca. 1861",
+      "citation": "Houghton Library, H B 74b",
+      "quote": "I am not suited, dear Emily with the second verse — It is remarkable as the chain lightening that blinds us hot nights in the Southern sky but it does not go with the ghostly shimmer of the first verse as well as the other one.",
+      "context": "Sue's surviving criticism of the \"Crescent\" second stanza. She admires it — calls it \"remarkable as the chain lightening\" — but objects that it does not match the tone of the first verse. She prefers \"the other one\" — the earlier \"Light laughs the breeze\" — on grounds of coherence with the first stanza's ghostly cold."
+    },
+    {
+      "id": "frostier-note",
+      "siglum": "N",
+      "kind": "note with enclosed stanza",
+      "title": "Emily Dickinson to Susan Dickinson: “Is this frostier?”",
+      "date": "ca. 1861",
+      "quote": "Is this frostier?",
+      "context": "Dickinson's accompanying note when she sent Sue the next attempt — the \"Springs — shake the Sills\" version. The question is direct evidence that she was responding to Sue's objection that the Crescent stanza did not match the ghostly cold of the first. Three words; an entire revision history hangs from them."
+    },
+    {
+      "id": "seals-draft",
+      "siglum": "D",
+      "kind": "manuscript",
+      "title": "“Springs — shake the seals” (further revision)",
+      "date": "ca. 1861",
+      "context": "The document that carries the “seals” stanza. The seed file described the stanza but did not identify the manuscript; until it is identified and cited, this witness is a placeholder."
+    },
+    {
+      "id": "higginson-1862",
+      "siglum": "H",
+      "kind": "letter with enclosed poems",
+      "title": "Emily Dickinson to T. W. Higginson",
+      "date": "April 1862",
+      "context": "Dickinson's first letter to Thomas Wentworth Higginson enclosed a copy of the poem carrying the “Grand go the Years” stanza: the version she chose to introduce herself to a prospective literary adviser, after Sue had already objected to it."
+    },
+    {
+      "id": "republican",
+      "siglum": "R",
+      "kind": "newspaper printing",
+      "title": "Springfield Daily Republican, “The Sleeping”",
+      "date": "1 March 1862",
+      "summary": "Printed anonymously as \"The Sleeping\" with the Fascicle 6 stanza (\"Light laughs the breeze\"). Apparently from the now-lost copy to Susan Dickinson.",
+      "context": "The first time the poem reached print. The newspaper used the Fascicle 6 version of the second stanza, not the Crescent version Dickinson had been working toward. It is possible Sue forwarded the copy; Dickinson seems to have had no editorial say."
+    }
+  ],
+  "connections": [
+    {
+      "from": "fascicle-6",
+      "to": "republican",
+      "relation": "second stanza printed in"
+    },
+    {
+      "from": "sue-letter",
+      "to": "ms-1861",
+      "relation": "objects to the second stanza of"
+    },
+    {
+      "from": "sue-letter",
+      "to": "frostier-note",
+      "relation": "answered by"
+    },
+    {
+      "from": "frostier-note",
+      "to": "seals-draft",
+      "relation": "revised further in"
+    }
+  ],
+  "source": {
+    "witnessId": "ms-1861",
+    "lang": "en",
+    "label": "The manuscript page, transcribed line for line · provisional transcription from the facsimile",
+    "stanzas": [
+      {
+        "id": "p1",
+        "lines": [
+          "Safe in their Alabaster",
+          "Chambers -",
+          "Untouched by Morning -",
+          "And untouched by Noon -",
+          "{crux:verb|Lie} the meek members of",
+          "the Resurrection -",
+          "Rafter of Satin - and Roof",
+          "of Stone!"
+        ]
+      },
+      {
+        "id": "p2",
+        "lines": [
+          "Grand go the Years - in the",
+          "Crescent - above them -",
+          "Worlds scoop their Arcs -",
+          "And Firmaments - row -",
+          "Diadems - drop - and Doges -",
+          "surrender -",
+          "Soundless as dots - on a",
+          "Disc of Snow -"
+        ]
+      },
+      {
+        "id": "p3",
+        "lines": [
+          "Springs - shake the Sills -",
+          "But - the Echoes - stiffen -",
+          "Hoar - is the Window -"
+        ]
+      }
     ]
   },
-  "readingCopy": {
-    "position": { "x": 220, "y": 0 },
+  "reading": {
+    "lang": "en",
+    "label": "Reading text · first stanza regularised from the manuscripts",
     "stanzas": [
       {
         "id": "stanza1",
@@ -56,190 +164,59 @@
       },
       {
         "id": "stanza2",
-        "asCrux": "stanza2"
+        "crux": "stanza2"
       }
     ]
   },
-  "witnesses": [
-    {
-      "id": "fascicle-6",
-      "type": "manuscript",
-      "sigla": "F",
-      "aboutPhrase": "the Fascicle 6 manuscript",
-      "position": { "x": -260, "y": 0 },
-      "archive": "Houghton Library · MS Am 1118.3 · h11b–c · Fascicle 6 · ca. 1859",
-      "apparatus": {
-        "context": "The earliest extant copy of Fr124, bound by Dickinson herself into Fascicle 6 in late 1859. The page documents her line breaks at \"Alabaster\" and \"members\" (split across lines), her indentation of even-numbered lines, and an in-manuscript variant for the word \"cadence\" (with \"cadences\" noted as alternate). It is the textual ground from which every subsequent version of the poem departs.",
-        "endorsements": [
-          { "endorser": "M. Stein · Wesleyan", "date": "Feb 2026", "reasoning": "Whatever positions we take on the variants, the Fascicle 6 copy is what Dickinson chose to preserve. The textual ground." },
-          { "endorser": "T. Hassan · NYU", "date": "Jan 2026", "reasoning": "The page is itself an argument — the broken words, the indentation, the in-MS \"cadences.\" Reading the poem without reading the page produces a different poem." }
-        ]
-      }
-    },
-    {
-      "id": "light-laughs",
-      "type": "variant",
-      "kind": "Variant",
-      "sigla": "L",
-      "title": "Light laughs the breeze",
-      "subtitle": "Fascicle 6 reading",
-      "date": "ca. 1859",
-      "aboutPhrase": "the Light Laughs reading",
-      "position": { "x": -280, "y": -740 },
-      "stagger": 0,
-      "body": "Light laughs the breeze\nIn her Castle above them —\nBabbles the Bee in a stolid ear,\nPipe the Sweet Birds in ignorant cadence —\nAh, what sagacity perished here!",
-      "multiline": true,
-      "apparatus": {
-        "context": "The second stanza as bound in Fascicle 6 in Dickinson's hand. This is also the version that the Springfield Republican printed (under the title \"The Sleeping\") on 1 March 1862, presumably from a now-lost copy that had passed through Sue. The stanza places natural life — breeze, bee, birds — against the silence of the entombed, ending in the sharp ironic outcry \"Ah, what sagacity perished here!\"",
-        "endorsements": [
-          { "endorser": "Springfield Daily Republican", "date": "March 1862", "reasoning": "Selected (by the newspaper or by whomever forwarded the poem to it) for the first published appearance. The choice was editorial rather than authorial, but it constitutes the version that nineteenth-century readers actually met." },
-          { "endorser": "M. Stein · Wesleyan", "date": "Feb 2026", "reasoning": "Bound in Dickinson's own hand into the fascicle. The deliberate copy, not the correspondence draft." }
-        ]
-      }
-    },
-    {
-      "id": "sue-letter",
-      "type": "source",
-      "kind": "Letter",
-      "sigla": "S",
-      "title": "Sue to Emily",
-      "subtitle": "H B 74b · Houghton",
-      "date": "ca. 1861",
-      "aboutPhrase": "Sue's letter to Emily",
-      "position": { "x": 420, "y": -540 },
-      "stagger": 1,
-      "body": "\"I am not suited, dear Emily with the second verse — It is remarkable as the chain lightening that blinds us hot nights in the Southern sky but it does not go with the ghostly shimmer of the first verse as well as the other one.\"",
-      "quoted": true,
-      "apparatus": {
-        "context": "Sue's surviving criticism of the \"Crescent\" second stanza. She admires it — calls it \"remarkable as the chain lightening\" — but objects that it does not match the tone of the first verse. She prefers \"the other one\" — the earlier \"Light laughs the breeze\" — on grounds of coherence with the first stanza's ghostly cold.",
-        "endorsements": [
-          { "endorser": "A. Okonkwo · King's College", "date": "Mar 2026", "reasoning": "The single most important document in this poem's history outside the autographs. Without H B 74b the revision sequence is opaque." }
-        ]
-      }
-    },
-    {
-      "id": "grand-go",
-      "type": "variant",
-      "kind": "Variant",
-      "sigla": "G",
-      "title": "Grand go the Years",
-      "subtitle": "sent to T.W. Higginson",
-      "date": "April 1862",
-      "aboutPhrase": "the Grand Go version sent to Higginson",
-      "position": { "x": 640, "y": 80 },
-      "stagger": 2,
-      "body": "Grand go the Years,\nIn the Crescent above them —\nWorlds scoop their Arcs —\nAnd Firmaments — row —\nDiadems — drop —\nAnd Doges — surrender —\nSoundless as Dots,\nOn a Disc of Snow.",
-      "multiline": true,
-      "apparatus": {
-        "context": "The cosmic stanza Dickinson sent to Thomas Wentworth Higginson in her first letter (April 1862) — empires falling, \"Diadems\" dropping, \"Doges\" surrendering, the whole human-political scale reduced to \"Dots on a Disc of Snow.\" The version she chose to introduce herself to a prospective literary advisor; a strong statement of authorial preference, though one Sue had already objected to.",
-        "endorsements": [
-          { "endorser": "J. Park · Brown", "date": "Feb 2026", "reasoning": "The version Dickinson chose for Higginson — the strongest single statement of authorial preference in this textual history. The cosmic scale completes what \"Alabaster\" begins." }
-        ]
-      }
-    },
-    {
-      "id": "frostier-note",
-      "type": "source",
-      "kind": "Note",
-      "sigla": "N",
-      "title": "Emily to Sue",
-      "subtitle": "\"Is this frostier?\"",
-      "date": "ca. 1861",
-      "aboutPhrase": "Emily's \"frostier\" note",
-      "position": { "x": 460, "y": 600 },
-      "stagger": 3,
-      "body": "Is this frostier?",
-      "quoted": true,
-      "apparatus": {
-        "context": "Dickinson's accompanying note when she sent Sue the next attempt — the \"Springs — shake the Sills\" version. The question is direct evidence that she was responding to Sue's objection that the Crescent stanza did not match the ghostly cold of the first. Three words; an entire revision history hangs from them.",
-        "endorsements": [
-          { "endorser": "D. Chen · Yale", "date": "Mar 2026", "reasoning": "Three words that document Dickinson responding directly to editorial criticism. The textual scholarship of stanza 2 depends on this fragment." }
-        ]
-      }
-    },
-    {
-      "id": "springs-sills",
-      "type": "variant",
-      "kind": "Variant",
-      "sigla": "I",
-      "title": "Springs — shake the Sills",
-      "subtitle": "sent to Sue",
-      "date": "ca. 1861",
-      "aboutPhrase": "the Sills version sent to Sue",
-      "position": { "x": -280, "y": 780 },
-      "stagger": 4,
-      "body": "Springs — shake the Sills —\nBut — the Echoes — stiffen —\nHoar — is the Window —\nand numb — the Door —\nTribes of Eclipse — in Tents of Marble —\nStaples of Ages — have buckled — there —",
-      "multiline": true,
-      "apparatus": {
-        "context": "The \"frostier\" attempt. The stanza brings the temporal world back into the crypt itself: spring shakes the sills but the echoes do not stir; the window is hoar, the door numb. The structural move is closer to Sue's wish than either of the first two stanzas. Whether Sue accepted it is not recorded.",
-        "endorsements": [
-          { "endorser": "A. Okonkwo · King's College", "date": "Mar 2026", "reasoning": "Emily's \"Is this frostier?\" is the most direct statement of authorial intent we have. She wrote it for this version, in response to Sue." },
-          { "endorser": "D. Chen · Yale", "date": "Mar 2026", "reasoning": "\"Hoar — is the Window — / and numb — the Door —\" brings the cold inside the structure. It does what the other versions only describe." }
-        ]
-      }
-    },
-    {
-      "id": "springs-seals",
-      "type": "variant",
-      "kind": "Variant",
-      "sigla": "J",
-      "title": "Springs — shake the seals",
-      "subtitle": "further revision",
-      "date": "ca. 1861",
-      "aboutPhrase": "the further Seals revision",
-      "position": { "x": -940, "y": 600 },
-      "stagger": 5,
-      "body": "Springs — shake the seals —\nBut the silence — stiffens —\nFrosts unhook — in Northern Zones —\nIcicles — crawl from polar Caverns —\nMidnight in Marble —\nRefutes — the Suns —",
-      "multiline": true,
-      "apparatus": {
-        "context": "A further revision in which \"Sills\" becomes the uncapitalised \"seals\" and the domestic conceit of door-and-window gives way to polar caverns and crawling icicles. The final line — \"Midnight in Marble — Refutes — the Suns —\" — is one of Dickinson's most uncompromising. Whether this stanza is the further refinement of the previous or an alternative to it remains an open scholarly question.",
-        "endorsements": [
-          { "endorser": "T. Hassan · NYU", "date": "Jan 2026", "reasoning": "\"Midnight in Marble — Refutes — the Suns —\" is the harshest line Dickinson wrote on this material. This version finishes the poem's argument." }
-        ]
-      }
-    },
-    {
-      "id": "republican",
-      "type": "source",
-      "kind": "Publication",
-      "sigla": "R",
-      "title": "Springfield Daily Republican",
-      "subtitle": "first publication",
-      "date": "1 March 1862",
-      "aboutPhrase": "the Republican publication",
-      "position": { "x": -1080, "y": 80 },
-      "stagger": 6,
-      "body": "Printed anonymously as \"The Sleeping\" with the Fascicle 6 stanza (\"Light laughs the breeze\"). Apparently from the now-lost copy to Susan Dickinson.",
-      "apparatus": {
-        "context": "The first time the poem reached print. The newspaper used the Fascicle 6 version of the second stanza, not the Crescent version Dickinson had been working toward. It is possible Sue forwarded the copy; Dickinson seems to have had no editorial say.",
-        "endorsements": []
-      }
-    }
-  ],
   "cruxes": [
     {
       "id": "verb",
       "label": "Stanza 1, line 4",
-      "location": "inline",
-      "canvasPosition": { "x": -940, "y": -540 },
       "positions": [
         {
           "id": "sleep",
           "label": "Sleep",
           "foregrounded": true,
-          "endorsements": [
-            { "endorser": "M. Stein · Wesleyan", "date": "Feb 2026", "reasoning": "The autograph reads \"Sleep.\" No witness supports \"Lie.\" The conjecture should sit in apparatus, not in the reading text." },
-            { "endorser": "A. Okonkwo · King's College", "date": "Mar 2026", "reasoning": "The Pauline echo is essential to the poem's argument. \"Sleep\" positions the meek inside scriptural promise; the irony depends on it." },
-            { "endorser": "T. Hassan · NYU", "date": "Jan 2026", "reasoning": "The visual disposition of the page rewards \"Sleep\" — the broken \"mem-/bers\" line falls with the right weight only when the verb is soft." }
+          "attestations": [
+            {
+              "witnessId": "fascicle-6",
+              "verified": false
+            }
+          ],
+          "voices": [
+            {
+              "kind": "illustrative",
+              "name": "A. Okonkwo · King's College",
+              "reasoning": "The Pauline echo is essential to the poem's argument. \"Sleep\" positions the meek inside scriptural promise; the irony depends on it.",
+              "date": "Mar 2026"
+            },
+            {
+              "kind": "illustrative",
+              "name": "T. Hassan · NYU",
+              "reasoning": "The visual disposition of the page rewards \"Sleep\" — the broken \"mem-/bers\" line falls with the right weight only when the verb is soft.",
+              "date": "Jan 2026"
+            }
           ]
         },
         {
           "id": "lie",
           "label": "Lie",
           "foregrounded": false,
-          "endorsements": [
-            { "endorser": "J. Park · Brown", "date": "Feb 2026", "reasoning": "Vendler's argument deserves the weight she gave it. \"Lie\" is the language of gravestone inscription — the actual material the poem is describing." },
-            { "endorser": "D. Chen · Yale", "date": "Mar 2026", "reasoning": "The sound case is real. \"Lie the meek members\" is consonantally heavier, matching the stillness the stanza describes. \"Sleep\" is too soft." }
+          "attestations": [
+            {
+              "witnessId": "ms-1861",
+              "verified": true,
+              "note": "Read from the facsimile reproduced on this site."
+            }
+          ],
+          "note": "The seed file called this a conjecture that no witness supports. It is in Dickinson's own hand on the manuscript page reproduced here: her revised copy begins the line “Lie the meek members of the Resurrection”. It is an authorial variant, not a conjecture.",
+          "voices": [
+            {
+              "kind": "illustrative",
+              "name": "D. Chen · Yale",
+              "reasoning": "The sound case is real. \"Lie the meek members\" is consonantally heavier, matching the stillness the stanza describes. \"Sleep\" is too soft.",
+              "date": "Mar 2026"
+            }
           ]
         }
       ]
@@ -247,23 +224,112 @@
     {
       "id": "stanza2",
       "label": "Stanza 2",
-      "location": "stanza",
       "positions": [
-        { "id": "grand-go", "label": "Grand go", "foregrounded": true, "witnessId": "grand-go" },
-        { "id": "light-laughs", "label": "Light laughs", "foregrounded": false, "witnessId": "light-laughs" },
-        { "id": "springs-sills", "label": "Springs Sills", "foregrounded": false, "witnessId": "springs-sills" },
-        { "id": "springs-seals", "label": "Springs seals", "foregrounded": false, "witnessId": "springs-seals" }
+        {
+          "id": "grand-go",
+          "label": "Grand go the Years",
+          "text": "Grand go the Years,\nIn the Crescent above them —\nWorlds scoop their Arcs —\nAnd Firmaments — row —\nDiadems — drop —\nAnd Doges — surrender —\nSoundless as Dots,\nOn a Disc of Snow.",
+          "foregrounded": true,
+          "attestations": [
+            {
+              "witnessId": "ms-1861",
+              "verified": true,
+              "note": "Read from the facsimile reproduced on this site. The lineation and pointing printed here are the seed file's, not the manuscript's."
+            },
+            {
+              "witnessId": "higginson-1862",
+              "verified": false
+            }
+          ],
+          "note": "The cosmic stanza Dickinson sent to Thomas Wentworth Higginson in her first letter (April 1862) — empires falling, \"Diadems\" dropping, \"Doges\" surrendering, the whole human-political scale reduced to \"Dots on a Disc of Snow.\" The version she chose to introduce herself to a prospective literary advisor; a strong statement of authorial preference, though one Sue had already objected to.",
+          "voices": [
+            {
+              "kind": "illustrative",
+              "name": "J. Park · Brown",
+              "reasoning": "The version Dickinson chose for Higginson — the strongest single statement of authorial preference in this textual history. The cosmic scale completes what \"Alabaster\" begins.",
+              "date": "Feb 2026"
+            }
+          ]
+        },
+        {
+          "id": "light-laughs",
+          "label": "Light laughs the breeze",
+          "text": "Light laughs the breeze\nIn her Castle above them —\nBabbles the Bee in a stolid ear,\nPipe the Sweet Birds in ignorant cadence —\nAh, what sagacity perished here!",
+          "foregrounded": false,
+          "attestations": [
+            {
+              "witnessId": "fascicle-6",
+              "verified": false
+            },
+            {
+              "witnessId": "republican",
+              "verified": false
+            }
+          ],
+          "note": "The second stanza as bound in Fascicle 6 in Dickinson's hand. This is also the version that the Springfield Republican printed (under the title \"The Sleeping\") on 1 March 1862, presumably from a now-lost copy that had passed through Sue. The stanza places natural life — breeze, bee, birds — against the silence of the entombed, ending in the sharp ironic outcry \"Ah, what sagacity perished here!\"",
+          "voices": [
+            {
+              "kind": "illustrative",
+              "name": "M. Stein · Wesleyan",
+              "reasoning": "Bound in Dickinson's own hand into the fascicle. The deliberate copy, not the correspondence draft.",
+              "date": "Feb 2026"
+            }
+          ]
+        },
+        {
+          "id": "springs-sills",
+          "label": "Springs — shake the Sills",
+          "text": "Springs — shake the Sills —\nBut — the Echoes — stiffen —\nHoar — is the Window —\nand numb — the Door —\nTribes of Eclipse — in Tents of Marble —\nStaples of Ages — have buckled — there —",
+          "foregrounded": false,
+          "attestations": [
+            {
+              "witnessId": "ms-1861",
+              "verified": true,
+              "note": "Read from the facsimile reproduced on this site. The page shown breaks off after the first three lines."
+            },
+            {
+              "witnessId": "frostier-note",
+              "verified": false
+            }
+          ],
+          "note": "The \"frostier\" attempt. The stanza brings the temporal world back into the crypt itself: spring shakes the sills but the echoes do not stir; the window is hoar, the door numb. The structural move is closer to Sue's wish than either of the first two stanzas. Whether Sue accepted it is not recorded.",
+          "voices": [
+            {
+              "kind": "illustrative",
+              "name": "A. Okonkwo · King's College",
+              "reasoning": "Emily's \"Is this frostier?\" is the most direct statement of authorial intent we have. She wrote it for this version, in response to Sue.",
+              "date": "Mar 2026"
+            },
+            {
+              "kind": "illustrative",
+              "name": "D. Chen · Yale",
+              "reasoning": "\"Hoar — is the Window — / and numb — the Door —\" brings the cold inside the structure. It does what the other versions only describe.",
+              "date": "Mar 2026"
+            }
+          ]
+        },
+        {
+          "id": "springs-seals",
+          "label": "Springs — shake the seals",
+          "text": "Springs — shake the seals —\nBut the silence — stiffens —\nFrosts unhook — in Northern Zones —\nIcicles — crawl from polar Caverns —\nMidnight in Marble —\nRefutes — the Suns —",
+          "foregrounded": false,
+          "attestations": [
+            {
+              "witnessId": "seals-draft",
+              "verified": false
+            }
+          ],
+          "note": "A further revision in which \"Sills\" becomes the uncapitalised \"seals\" and the domestic conceit of door-and-window gives way to polar caverns and crawling icicles. The final line — \"Midnight in Marble — Refutes — the Suns —\" — is one of Dickinson's most uncompromising. Whether this stanza is the further refinement of the previous or an alternative to it remains an open scholarly question.",
+          "voices": [
+            {
+              "kind": "illustrative",
+              "name": "T. Hassan · NYU",
+              "reasoning": "\"Midnight in Marble — Refutes — the Suns —\" is the harshest line Dickinson wrote on this material. This version finishes the poem's argument.",
+              "date": "Jan 2026"
+            }
+          ]
+        }
       ]
     }
-  ],
-  "connections": [
-    { "from": "fascicle-6", "to": "light-laughs" },
-    { "from": "fascicle-6", "to": "grand-go" },
-    { "from": "fascicle-6", "to": "springs-sills" },
-    { "from": "fascicle-6", "to": "springs-seals" },
-    { "from": "sue-letter", "to": "grand-go" },
-    { "from": "sue-letter", "to": "light-laughs" },
-    { "from": "frostier-note", "to": "springs-sills" },
-    { "from": "republican", "to": "light-laughs" }
   ]
 }

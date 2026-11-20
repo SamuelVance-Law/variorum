@@ -1,0 +1,212 @@
+{
+  "schemaVersion": "2.0",
+  "id": "sonnet-116",
+  "work": {
+    "title": "Let me not to the marriage of true minds",
+    "shortTitle": "Sonnet 116",
+    "author": "William Shakespeare",
+    "kind": "sonnet",
+    "date": "1609",
+    "language": "en"
+  },
+  "edition": {
+    "editor": "Sam Vance-Law",
+    "status": "draft",
+    "updated": "2026-11-20",
+    "note": "Seed apparatus. It was machine-drafted and has not yet been checked against the sources: every attribution of a reading to a witness is marked unverified until someone has the book or manuscript in hand. Voices marked illustrative are invented, to show how the form works; they are not real scholars."
+  },
+  "witnesses": [
+    {
+      "id": "q1609",
+      "siglum": "Q",
+      "kind": "first edition",
+      "title": "Shake-speares Sonnets",
+      "creator": "Thomas Thorpe, publisher",
+      "date": "1609",
+      "citation": "STC 22353",
+      "context": "The 1609 Quarto is the only early authority for the text of this sonnet, which it misnumbers 119. Every later text descends from it."
+    },
+    {
+      "id": "benson-1640",
+      "siglum": "B",
+      "kind": "reprint",
+      "title": "Poems: Written by Wil. Shake-speare, Gent.",
+      "creator": "John Benson, ed.",
+      "date": "1640",
+      "context": "John Benson's 1640 Poems is the first reprint of the sonnets and the most interfering: it regroups them under invented titles, runs several together as single poems, and in places changes masculine pronouns to feminine. Sonnet 116 survives largely in its Quarto wording but loses its position in the sequence. Benson, not Q, was the text most 17th- and early-18th-century readers knew."
+    },
+    {
+      "id": "malone-1790",
+      "siglum": "M",
+      "kind": "critical edition",
+      "title": "The Plays and Poems of William Shakspeare",
+      "creator": "Edmond Malone, ed.",
+      "date": "1790",
+      "context": "Edmond Malone's 1790 edition is the hinge of the sonnets' editorial history: it discards Benson's rearrangement, returns to the Quarto sequence, and supplies the regularized spelling and punctuation that became the received modern text."
+    },
+    {
+      "id": "booth-1977",
+      "siglum": "Bo",
+      "kind": "commentary edition",
+      "title": "Shakespeare's Sonnets",
+      "creator": "Stephen Booth, ed.",
+      "date": "1977",
+      "context": "Stephen Booth's edition sets the 1609 facsimile against a minimally modernized reading text and annotates the places where meaning stays open, preserving the Quarto's ambiguities rather than resolving them."
+    },
+    {
+      "id": "vendler-1997",
+      "siglum": "V",
+      "kind": "critical reading",
+      "title": "The Art of Shakespeare's Sonnets",
+      "creator": "Helen Vendler",
+      "date": "1997",
+      "context": "Helen Vendler's close readings treat form as argument. On 116 she hears the poem as a rebuttal, its definitions of love mounted against an implied objection."
+    }
+  ],
+  "connections": [
+    {
+      "from": "q1609",
+      "to": "benson-1640",
+      "relation": "reprinted and rearranged in"
+    },
+    {
+      "from": "q1609",
+      "to": "malone-1790",
+      "relation": "restored as copy-text by"
+    },
+    {
+      "from": "q1609",
+      "to": "booth-1977",
+      "relation": "printed in facsimile in"
+    }
+  ],
+  "source": {
+    "witnessId": "q1609",
+    "lang": "en",
+    "label": "1609 Quarto, original spelling",
+    "stanzas": [
+      {
+        "id": "q1",
+        "lines": [
+          "Let me not to the marriage of true mindes",
+          "Admit {crux:impediments|impediments,} loue is not loue",
+          "Which alters when it alteration findes,",
+          "Or bends with the remouer to remoue."
+        ]
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "O no, it is an euer fixed marke",
+          "That lookes on tempests and is neuer shaken;",
+          "It is the star to euery wandring barke,",
+          "Whose worths vnknowne, although his higth be taken."
+        ]
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "Lou's not Times foole, though rosie lips and cheeks",
+          "Within his bending sickles compasse come,",
+          "Loue alters not with his breefe houres and weekes,",
+          "But beares it out euen to the edge of doome:"
+        ]
+      },
+      {
+        "id": "couplet",
+        "lines": [
+          {
+            "text": "If this be error and vpon me proued,",
+            "indent": true
+          },
+          {
+            "text": "I neuer writ, nor no man euer loued.",
+            "indent": true
+          }
+        ]
+      }
+    ]
+  },
+  "reading": {
+    "lang": "en",
+    "label": "Modernized reading text · spelling and pointing regularized from the 1609 Quarto",
+    "stanzas": [
+      {
+        "id": "q1",
+        "lines": [
+          "Let me not to the marriage of true minds",
+          "Admit {crux:impediments} Love is not love",
+          "Which alters when it alteration finds,",
+          "Or bends with the remover to remove."
+        ]
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "O no, it is an ever-fixèd mark",
+          "That looks on tempests and is never shaken;",
+          "It is the star to every wand'ring bark,",
+          "Whose worth's unknown, although his height be taken."
+        ]
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "Love's not Time's fool, though rosy lips and cheeks",
+          "Within his bending sickle's compass come;",
+          "Love alters not with his brief hours and weeks,",
+          "But bears it out even to the edge of doom."
+        ]
+      },
+      {
+        "id": "couplet",
+        "lines": [
+          {
+            "text": "If this be error and upon me proved,",
+            "indent": true
+          },
+          {
+            "text": "I never writ, nor no man ever loved.",
+            "indent": true
+          }
+        ]
+      }
+    ]
+  },
+  "cruxes": [
+    {
+      "id": "impediments",
+      "label": "Line 2, the sentence break",
+      "positions": [
+        {
+          "id": "stop",
+          "label": "impediments.",
+          "foregrounded": true,
+          "attestations": [
+            {
+              "witnessId": "booth-1977",
+              "verified": false
+            },
+            {
+              "witnessId": "vendler-1997",
+              "verified": false
+            }
+          ],
+          "note": "The case for the full stop: it isolates “Love is not love” as a fresh axiom and lets the echo of the marriage service — the “cause or just impediment” of the liturgy — close on its own clause. Stopping the line hard makes the definition that follows a counter-assertion, which suits a sonnet built as a rebuttal."
+        },
+        {
+          "id": "comma",
+          "label": "impediments,",
+          "foregrounded": false,
+          "attestations": [
+            {
+              "witnessId": "q1609",
+              "verified": false
+            }
+          ],
+          "note": "The Quarto's comma runs the liturgical admission straight into the definition as one continuous utterance, so that “admit impediments, love is not love” is heard as a single breath rather than two sentences."
+        }
+      ]
+    }
+  ]
+}

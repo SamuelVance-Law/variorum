@@ -1,118 +1,113 @@
 {
-  "schemaVersion": "1.0",
-  "id": "REPLACE_ME_with_short_lowercase_id",
+  "schemaVersion": "2.0",
+  "id": "your-work-id",
   "work": {
     "title": "Title of the Work",
-    "shortTitle": "Short title or catalogue number",
-    "author": "Author Name",
+    "shortTitle": "Short title",
+    "author": "Author",
     "kind": "poem",
-    "datePeriod": "ca. YYYY–YYYY"
+    "date": "year or period",
+    "language": "en"
   },
-  "primaryWitnessId": "primary-witness",
-  "manuscriptRendering": {
-    "image": {
-      "src": "works/REPLACE_ME/manuscript-image.jpg",
-      "alt": "Description of the manuscript page for accessibility",
-      "credit": "Courtesy [Archive Name]. Image used under [license]."
-    },
-    "lines": [
-      { "text": "First line of the primary witness, as the author wrote it" },
-      { "text": "Second line, indented", "indent": true },
-      { "text": "Third line, with a stanza break above", "gap": true },
-      { "text": "Fourth line continues the stanza" }
-    ],
-    "cruxMarks": [
-      { "cruxId": "example-inline-crux", "top": 80, "left": 60, "title": "Tooltip for the mark" }
-    ],
-    "caption": [
-      { "text": "Archive name" },
-      { "text": "Catalogue · number", "mono": true },
-      { "text": "Date or fascicle" }
-    ]
-  },
-  "readingCopy": {
-    "position": { "x": 220, "y": 0 },
-    "stanzas": [
-      {
-        "id": "stanza1",
-        "lines": [
-          "A clean typeset line in the reading copy",
-          "Another line with a {crux:example-inline-crux} contested word",
-          "A third line of stanza one"
-        ]
-      },
-      {
-        "id": "stanza2",
-        "asCrux": "example-stanza-crux"
-      }
-    ]
+  "edition": {
+    "editor": "Your name",
+    "status": "draft",
+    "updated": "YYYY-MM-DD",
+    "note": "One or two sentences on what state this apparatus is in."
   },
   "witnesses": [
     {
-      "id": "primary-witness",
-      "type": "manuscript",
-      "sigla": "P",
-      "aboutPhrase": "the primary witness",
-      "position": { "x": 0, "y": 0 },
-      "archive": "Archive · Catalogue · Date",
-      "apparatus": {
-        "context": "Editorial context for this witness — what it is, what it argues, why it matters textually.",
-        "endorsements": []
-      }
+      "id": "first-witness",
+      "siglum": "A",
+      "kind": "manuscript",
+      "title": "The document that carries the base text",
+      "date": "year",
+      "citation": "Where it is held, or the edition and page",
+      "context": "What this document is and why it matters to the text."
     },
     {
-      "id": "alternative-stanza",
-      "type": "variant",
-      "kind": "Variant",
-      "sigla": "A",
-      "title": "Alternative stanza title",
-      "subtitle": "Source or context",
-      "date": "ca. YYYY",
-      "aboutPhrase": "the alternative reading",
-      "position": { "x": -300, "y": -600 },
-      "stagger": 0,
-      "body": "The text of the alternative stanza, line\nby line if multiline.",
-      "multiline": true,
-      "apparatus": {
-        "context": "Editorial context for this variant.",
-        "endorsements": []
-      }
+      "id": "second-witness",
+      "siglum": "B",
+      "kind": "edition",
+      "title": "A document that reads differently",
+      "date": "year",
+      "citation": "Edition and page",
+      "context": "What this document is and why it matters to the text."
     }
   ],
+  "connections": [
+    {
+      "from": "first-witness",
+      "to": "second-witness",
+      "relation": "copied in"
+    }
+  ],
+  "source": {
+    "witnessId": "first-witness",
+    "lang": "en",
+    "label": "Transcribed line for line",
+    "stanzas": [
+      {
+        "id": "s1",
+        "lines": [
+          "First line as the document has it,",
+          "second line with a {crux:example|contested} word."
+        ]
+      }
+    ]
+  },
+  "reading": {
+    "lang": "en",
+    "label": "Reading text",
+    "stanzas": [
+      {
+        "id": "s1",
+        "lines": [
+          "First line as you print it,",
+          "second line with a {crux:example} word."
+        ]
+      }
+    ]
+  },
   "cruxes": [
     {
-      "id": "example-inline-crux",
-      "label": "Stanza 1, line 2",
-      "location": "inline",
-      "canvasPosition": { "x": -600, "y": -400 },
+      "id": "example",
+      "label": "Line 2",
       "positions": [
         {
-          "id": "reading-original",
-          "label": "Original",
+          "id": "contested",
+          "label": "contested",
           "foregrounded": true,
-          "endorsements": []
+          "attestations": [
+            {
+              "witnessId": "first-witness",
+              "verified": false
+            }
+          ],
+          "note": "Optional: the editor's account of the case for this reading."
         },
         {
-          "id": "reading-alternative",
-          "label": "Alternative",
-          "foregrounded": false,
-          "endorsements": []
-        }
-      ]
-    },
-    {
-      "id": "example-stanza-crux",
-      "label": "Stanza 2",
-      "location": "stanza",
-      "positions": [
-        {
-          "id": "alternative-stanza",
-          "label": "Alternative",
-          "foregrounded": true,
-          "witnessId": "alternative-stanza"
+          "id": "disputed",
+          "label": "disputed",
+          "attestations": [
+            {
+              "witnessId": "second-witness",
+              "locus": "p. 12",
+              "verified": false
+            }
+          ],
+          "voices": [
+            {
+              "kind": "attested",
+              "name": "A. Scholar",
+              "date": "1999",
+              "citation": "Book or article, page",
+              "verified": false,
+              "reasoning": "A published argument for this reading, summarised or quoted, with the citation above."
+            }
+          ]
         }
       ]
     }
-  ],
-  "connections": []
+  ]
 }
