@@ -1,30 +1,20 @@
-name: Validate work files
+name: Validate
 
-# Runs the schema validator on every change to work files (or to the validator
-# itself). Since this project is edited via the GitHub browser UI rather than
-# locally, CI is where the safety net lives — a typo in a work file would
-# otherwise deploy a broken site via Cloudflare Pages auto-deploy.
+# Runs the validator and the unit tests on every push and pull request.
+# Note: on its own this does NOT stop Cloudflare Pages from deploying a
+# broken commit. See "Make validation gate the deploy" in the README.
 
-on:
-  push:
-    paths:
-      - 'works/**.json'
-      - 'validate.py'
-      - '.github/workflows/validate.yml'
-  pull_request:
-    paths:
-      - 'works/**.json'
-      - 'validate.py'
+on: [push, pull_request]
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-node@v4
         with:
-          python-version: '3.x'
-
-      - name: Validate all work files
-        run: python3 validate.py works/*.json
+          node-version: 22
+      - name: Validate every work file and the manifest
+        run: node tools/validate.mjs
+      - name: Unit tests
+        run: node --test
